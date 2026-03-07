@@ -722,11 +722,32 @@
           headers: { 'content-type': 'application/json', 'accept': 'application/json' },
           body: JSON.stringify(payload),
         });
+
+        // If Pages Functions isn't deployed/ready yet, Cloudflare will often return 404/405 with no JSON.
+        if (resp.status === 404 || resp.status === 405) {
+          throw new Error('Sending isn’t enabled on this page yet. Please refresh in 60 seconds or contact me directly.');
+        }
+
         const data = await resp.json().catch(() => ({}));
         if (!resp.ok || !data.ok) {
           const msg = (data && data.error) ? data.error : 'Failed to send.';
           throw new Error(msg);
         }
+      }
+
+      function whatsappFallback(payload) {
+        const text = encodeURIComponent(
+          `Hi Charlie — I’d like a customized version of one of your real estate website concepts.\n\n` +
+          `Name: ${payload.name}\n` +
+          `Email: ${payload.email}\n` +
+          (payload.market ? `Market: ${payload.market}\n` : '') +
+          (payload.brokerage ? `Brokerage: ${payload.brokerage}\n` : '') +
+          (payload.style ? `Favorite style: ${payload.style}\n` : '') +
+          (payload.timeline ? `Timeline: ${payload.timeline}\n` : '') +
+          `\nNotes:\n${payload.notes || '(none)'}\n`
+        );
+        // Uses WhatsApp "Click to Chat". Works on mobile and desktop (WhatsApp Web).
+        window.location.href = `https://wa.me/18583055764?text=${text}`;
       }
 
       function mailtoFallback(payload) {
@@ -761,7 +782,9 @@
           if (statusEl) statusEl.textContent = 'Sent. You’ll hear back shortly.';
         } catch (err) {
           if (statusEl) statusEl.textContent = (err && err.message) ? err.message : 'Could not send.';
-          // fallback: try opening the email draft (may be blocked on some devices)
+          // fallback: open WhatsApp message (most reliable across devices)
+          try { whatsappFallback(payload); return; } catch {}
+          // secondary fallback: try opening the email draft
           try { mailtoFallback(payload); } catch {}
         }
       });
