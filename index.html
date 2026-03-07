@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Charlie Kon Web Management & Creation — Demo Gallery</title>
+  <meta name="description" content="Private demo concepts for San Diego & Los Angeles real estate agents." />
+  <style>
+    :root{--bg:#0b0f17;--card:#111a2a;--text:#e7eefc;--muted:#a9b6d3;--link:#7ab7ff;--line:rgba(255,255,255,.08)}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(1200px 600px at 20% 0%, rgba(122,183,255,.18), transparent 50%),var(--bg);color:var(--text)}
+    .wrap{max-width:980px;margin:0 auto;padding:42px 16px 60px}
+    .pill{display:inline-block;font-size:12px;color:var(--muted);border:1px solid var(--line);padding:6px 10px;border-radius:999px}
+    h1{margin:14px 0 6px;font-size:34px;letter-spacing:-.02em}
+    p{color:var(--muted);margin:0 0 16px;line-height:1.6}
+    a{color:var(--link);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:18px}
+    .card{grid-column:span 12;background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid var(--line);border-radius:16px;padding:16px}
+    .card h2{margin:0 0 10px;font-size:18px}
+    ul{margin:0;padding-left:18px}
+    li{margin:6px 0}
+    .muted{color:var(--muted)}
+    .footer{margin-top:24px;font-size:12px;color:var(--muted)}
+    @media (min-width:720px){
+      .card.span6{grid-column:span 6}
+      .card.span4{grid-column:span 4}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <span class="pill">Internal demo gallery</span>
+    <h1>Demo Gallery</h1>
+    <p>Charlie Kon Web Management &amp; Creation — website demo concepts for <strong>San Diego</strong> + <strong>Los Angeles</strong> real estate agents.</p>
+
+    <div class="grid">
+      <section class="card span6">
+        <h2>Real estate agent demos</h2>
+        <ul>
+          <li><a href="/demo/sample-agent/">Sample agent demo</a> <span class="muted">(template placeholder)</span></li>
+        </ul>
+        <p class="muted" style="margin-top:10px">Each demo lives under <code>/demo/&lt;slug&gt;/</code>.</p>
+      </section>
+
+      <section class="card span6">
+        <h2>How we use this</h2>
+        <ul>
+          <li>Create a personalized demo for a specific agent</li>
+          <li>Send a short, 1:1 outreach email asking if they want to see it</li>
+          <li>If they like it, connect their domain + swap in their headshot/logo once permitted</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="footer">© <span id="y"></span> Charlie Kon Web Management &amp; Creation</div>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
