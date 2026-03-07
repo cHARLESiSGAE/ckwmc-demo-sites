@@ -645,7 +645,8 @@
                   <a href="#designs" class="inline-flex items-center justify-center rounded-full border border-navy-900/15 px-6 py-3 text-sm font-semibold hover:bg-white">Browse again</a>
                 </div>
 
-                <p class="text-xs text-navy-900/60">This page is a static showcase. Clicking “Request” opens an email draft.</p>
+                <p id="formStatus" class="text-xs text-navy-900/60"></p>
+                <p class="text-xs text-navy-900/60">If your device blocks the email popup, the form can still send directly when enabled.</p>
               </form>
             </div>
           </div>
@@ -712,23 +713,57 @@
       mobileMenu.addEventListener('click', (e) => { if (e.target.closest('a')) closeMobileMenu(); });
 
       const sendBtn = document.getElementById('sendBtn');
+      const statusEl = document.getElementById('formStatus');
       const g = (id) => (document.getElementById(id)?.value || '').trim();
-      sendBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const name = g('f_name');
-        const email = g('f_email');
-        const market = g('f_market');
-        const brokerage = g('f_brokerage');
-        const style = g('f_style');
-        const timeline = g('f_timeline');
-        const notes = g('f_notes');
 
-        const subject = encodeURIComponent(`Real estate website demo request — ${name || 'New inquiry'}`);
+      async function sendViaApi(payload) {
+        const resp = await fetch('/api/request-demo', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json', 'accept': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await resp.json().catch(() => ({}));
+        if (!resp.ok || !data.ok) {
+          const msg = (data && data.error) ? data.error : 'Failed to send.';
+          throw new Error(msg);
+        }
+      }
+
+      function mailtoFallback(payload) {
+        const subject = encodeURIComponent(`Real estate website demo request — ${payload.name || 'New inquiry'}`);
         const body = encodeURIComponent(
-          `Hi Charlie,\n\nI’d like a customized version of one of your real estate website concepts.\n\nName: ${name}\nEmail: ${email}\nMarket: ${market}\nBrokerage: ${brokerage}\nFavorite style: ${style}\nTimeline: ${timeline}\n\nNotes:\n${notes}\n`
+          `Hi Charlie,\n\nI’d like a customized version of one of your real estate website concepts.\n\nName: ${payload.name}\nEmail: ${payload.email}\nMarket: ${payload.market}\nBrokerage: ${payload.brokerage}\nFavorite style: ${payload.style}\nTimeline: ${payload.timeline}\n\nNotes:\n${payload.notes}\n`
         );
-
         window.location.href = `mailto:charlespkon@gmail.com?subject=${subject}&body=${body}`;
+      }
+
+      sendBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const payload = {
+          name: g('f_name'),
+          email: g('f_email'),
+          market: g('f_market'),
+          brokerage: g('f_brokerage'),
+          style: g('f_style'),
+          timeline: g('f_timeline'),
+          notes: g('f_notes'),
+        };
+
+        if (!payload.name || !payload.email) {
+          if (statusEl) statusEl.textContent = 'Please enter your name and email.';
+          return;
+        }
+
+        if (statusEl) statusEl.textContent = 'Sending…';
+
+        try {
+          await sendViaApi(payload);
+          if (statusEl) statusEl.textContent = 'Sent. You’ll hear back shortly.';
+        } catch (err) {
+          if (statusEl) statusEl.textContent = (err && err.message) ? err.message : 'Could not send.';
+          // fallback: try opening the email draft (may be blocked on some devices)
+          try { mailtoFallback(payload); } catch {}
+        }
       });
     })();
   </script>
