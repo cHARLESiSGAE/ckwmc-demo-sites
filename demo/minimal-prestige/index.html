@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Luxury real estate website demo template for real estate agents." />
+  <title>[Agent Name] | Minimal Prestige — [City / Area]</title>
+
+  <!-- Live demo (Cloudflare Pages): https://6835f78f.ckwmc-demo-sites.pages.dev/demo/minimal-prestige/ -->
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              950: '#050814',
+              900: '#0B1224',
+              800: '#121B33',
+            },
+            gold: {
+              400: '#D6B15E',
+              500: '#C9A24B',
+              600: '#B88D2F',
+            },
+            sand: {
+              50: '#FAF9F7',
+              100: '#F3F0EA',
+              200: '#EAE5DA'
+            }
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(0,0,0,.08)',
+            glow: '0 0 0 1px rgba(214,177,94,.25), 0 16px 44px rgba(5,8,20,.35)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html{scroll-behavior:smooth}
+    /* tasteful text selection */
+    ::selection{background: rgba(214,177,94,.35)}
+  </style>
+</head>
+<body class="bg-white text-navy-900 antialiased">
+
+  <!-- Sticky Nav -->
+  <header class="fixed inset-x-0 top-0 z-50">
+    <div class="backdrop-blur supports-[backdrop-filter]:bg-white/75 bg-white/90 border-b border-navy-900/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <a href="#top" class="flex items-center gap-2">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-navy-950 text-gold-400 font-semibold">K</span>
+            <div class="leading-tight">
+              <div class="text-sm font-semibold tracking-wide">[Agent Name]</div>
+              <div class="text-xs text-navy-900/60">[Brokerage Name] • [City / Area]</div>
+            </div>
+          </a>
+
+          <nav class="hidden md:flex items-center gap-7 text-sm">
+            <a class="hover:text-navy-950 text-navy-900/80" href="#listings">Listings</a>
+            <a class="hover:text-navy-950 text-navy-900/80" href="#about">About</a>
+            <a class="hover:text-navy-950 text-navy-900/80" href="#services">Services</a>
+            <a class="hover:text-navy-950 text-navy-900/80" href="#insights">Insights</a>
+            <a class="hover:text-navy-950 text-navy-900/80" href="#contact">Contact</a>
+          </nav>
+
+          <div class="hidden md:flex items-center gap-3">
+            <a href="#search" class="rounded-full border border-navy-900/15 px-4 py-2 text-sm hover:bg-sand-50">Property Search</a>
+            <button data-open-modal="consult" class="rounded-full bg-navy-950 px-4 py-2 text-sm text-white shadow-soft hover:bg-navy-900">
+              Schedule Consultation
+            </button>
+          </div>
+
+          <button id="mobileMenuBtn" class="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-navy-900/15 hover:bg-sand-50" aria-label="Open menu" aria-expanded="false">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden border-b border-navy-900/10 bg-white/95 backdrop-blur">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
+        <div class="grid gap-3 text-sm">
+          <a class="py-2" href="#listings">Listings</a>
+          <a class="py-2" href="#about">About</a>
+          <a class="py-2" href="#services">Services</a>
+          <a class="py-2" href="#insights">Insights</a>
+          <a class="py-2" href="#contact">Contact</a>
+          <div class="flex gap-3 pt-2">
+            <a href="#search" class="flex-1 text-center rounded-full border border-navy-900/15 px-4 py-2 hover:bg-sand-50">Search</a>
+            <button data-open-modal="consult" class="flex-1 rounded-full bg-navy-950 px-4 py-2 text-white hover:bg-navy-900">Consult</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="pt-16">
+
+    <!-- HERO -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0">
+        <img
+          class="h-full w-full object-cover"
+          src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=2400&q=80"
+          alt="Luxury home"
+          loading="eager"
+        />
+        <div class="absolute inset-0 bg-gradient-to-b from-navy-950/70 via-navy-950/55 to-navy-950/80"></div>
+        <div class="absolute inset-0" style="background:radial-gradient(800px 400px at 30% 20%, rgba(214,177,94,.18), transparent 55%)"></div>
+      </div>
+
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-10 py-14 sm:py-20">
+          <div class="lg:col-span-7">
+            <p class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs text-white/90">
+              <span class="h-2 w-2 rounded-full bg-gold-400"></span>
+              Premium real estate in <strong class="font-semibold">[City / Area]</strong>
+            </p>
+            <h1 class="mt-5 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-white">
+              A clean, modern way to buy and sell.
+            </h1>
+            <p class="mt-5 text-base sm:text-lg text-white/80 max-w-2xl">
+              Premium service, discreet negotiation, and a data-driven strategy — tailored for buyers and sellers who expect a seamless experience.
+            </p>
+
+            <div class="mt-8 flex flex-col sm:flex-row gap-3">
+              <a href="#listings" class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-navy-950 shadow-glow hover:bg-sand-50">
+                View Listings
+              </a>
+              <button data-open-modal="consult" class="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white hover:bg-white/15">
+                Schedule Consultation
+              </button>
+              <a href="#contact" class="inline-flex items-center justify-center rounded-full border border-white/20 bg-transparent px-6 py-3 text-sm font-semibold text-white/90 hover:bg-white/10">
+                Request Property Alerts
+              </a>
+            </div>
+
+            <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl">
+              <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                <div class="text-xl font-semibold text-white">$[X]M+</div>
+                <div class="text-xs text-white/70">Total sales volume</div>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                <div class="text-xl font-semibold text-white">[##]+</div>
+                <div class="text-xs text-white/70">Homes sold</div>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                <div class="text-xl font-semibold text-white">[##]</div>
+                <div class="text-xs text-white/70">Years experience</div>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                <div class="text-xl font-semibold text-white">★★★★★</div>
+                <div class="text-xs text-white/70">Client satisfaction</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Lead Card -->
+          <div class="lg:col-span-5">
+            <div class="rounded-3xl border border-white/15 bg-white/10 backdrop-blur p-6 shadow-glow">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-sm font-semibold text-white">Get a curated list of homes</p>
+                  <p class="text-xs text-white/75">Tailored to your budget + neighborhoods.</p>
+                </div>
+                <span class="inline-flex items-center rounded-full bg-gold-400/15 px-3 py-1 text-xs font-semibold text-gold-400 border border-gold-400/25">Demo</span>
+              </div>
+
+              <form class="mt-5 grid gap-3" onsubmit="return false">
+                <div class="grid sm:grid-cols-2 gap-3">
+                  <input class="w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-gold-400/50" placeholder="Name" />
+                  <input class="w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-gold-400/50" placeholder="Email" type="email" />
+                </div>
+                <div class="grid sm:grid-cols-2 gap-3">
+                  <input class="w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-gold-400/50" placeholder="Phone (optional)" />
+                  <select class="w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-gold-400/50">
+                    <option class="text-navy-950">I’m looking to…</option>
+                    <option class="text-navy-950">Buy</option>
+                    <option class="text-navy-950">Sell</option>
+                    <option class="text-navy-950">Invest</option>
+                  </select>
+                </div>
+                <textarea class="w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-gold-400/50" rows="4" placeholder="Tell me what you want (city/ZIP, price range, must-haves)…"></textarea>
+                <button class="mt-1 inline-flex items-center justify-center rounded-full bg-gold-400 px-6 py-3 text-sm font-semibold text-navy-950 hover:bg-gold-500">
+                  Book Consultation
+                </button>
+                <p class="text-xs text-white/65">By submitting, you agree to be contacted about your inquiry. (Add compliance text as needed.)</p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED LISTINGS -->
+    <section id="listings" class="bg-sand-50 border-y border-navy-900/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Featured Listings — Minimal Prestige</h2>
+            <p class="mt-2 text-navy-900/70">High-end homes selected for lifestyle, location, and long-term value.</p>
+          </div>
+          <a href="#search" class="inline-flex items-center justify-center rounded-full border border-navy-900/15 bg-white px-5 py-2.5 text-sm font-semibold hover:bg-sand-50">Search all listings</a>
+        </div>
+
+        <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <!-- card -->
+          <article class="group rounded-3xl bg-white border border-navy-900/10 shadow-soft overflow-hidden">
+            <div class="relative">
+              <img class="h-52 w-full object-cover" src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1600&q=80" alt="Property" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy-950/55 to-transparent"></div>
+              <div class="absolute bottom-4 left-4">
+                <div class="text-white font-semibold text-lg">$[Price]</div>
+                <div class="text-white/80 text-xs">[Address], [City]</div>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex items-center justify-between text-xs text-navy-900/70">
+                <span>[Beds] bd • [Baths] ba</span>
+                <span>[Sqft] sqft</span>
+              </div>
+              <p class="mt-3 text-sm text-navy-900/75">Bright open layout, chef’s kitchen, and a private outdoor retreat — minutes from top dining.</p>
+              <a href="#" class="mt-4 inline-flex items-center justify-center rounded-full border border-navy-900/15 px-4 py-2 text-sm font-semibold hover:bg-sand-50 group-hover:border-navy-900/25">View Property</a>
+            </div>
+          </article>
+
+          <article class="group rounded-3xl bg-white border border-navy-900/10 shadow-soft overflow-hidden">
+            <div class="relative">
+              <img class="h-52 w-full object-cover" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80" alt="Property" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy-950/55 to-transparent"></div>
+              <div class="absolute bottom-4 left-4">
+                <div class="text-white font-semibold text-lg">$[Price]</div>
+                <div class="text-white/80 text-xs">[Address], [City]</div>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex items-center justify-between text-xs text-navy-900/70">
+                <span>[Beds] bd • [Baths] ba</span>
+                <span>[Sqft] sqft</span>
+              </div>
+              <p class="mt-3 text-sm text-navy-900/75">Panoramic views, resort-style pool, and a quiet cul-de-sac location — refined and private.</p>
+              <a href="#" class="mt-4 inline-flex items-center justify-center rounded-full border border-navy-900/15 px-4 py-2 text-sm font-semibold hover:bg-sand-50 group-hover:border-navy-900/25">View Property</a>
+            </div>
+          </article>
+
+          <article class="group rounded-3xl bg-white border border-navy-900/10 shadow-soft overflow-hidden">
+            <div class="relative">
+              <img class="h-52 w-full object-cover" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80" alt="Property" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy-950/55 to-transparent"></div>
+              <div class="absolute bottom-4 left-4">
+                <div class="text-white font-semibold text-lg">$[Price]</div>
+                <div class="text-white/80 text-xs">[Address], [City]</div>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex items-center justify-between text-xs text-navy-900/70">
+                <span>[Beds] bd • [Baths] ba</span>
+                <span>[Sqft] sqft</span>
+              </div>
+              <p class="mt-3 text-sm text-navy-900/75">Modern architecture with premium finishes, natural light, and effortless indoor/outdoor living.</p>
+              <a href="#" class="mt-4 inline-flex items-center justify-center rounded-full border border-navy-900/15 px-4 py-2 text-sm font-semibold hover:bg-sand-50 group-hover:border-navy-900/25">View Property</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="bg-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+        <div class="grid lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-5">
+            <div class="rounded-3xl overflow-hidden border border-navy-900/10 shadow-soft bg-sand-50">
+              <img
+                class="h-80 w-full object-cover"
+                src="https://images.unsplash.com/photo-1520975693411-6a6a2d4a1b9b?auto=format&fit=crop&w=1400&q=80"
+                alt="Agent portrait placeholder"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <div class="lg:col-span-7">
+            <p class="text-xs font-semibold tracking-widest text-gold-600">ABOUT THE AGENT</p>
+            <h2 class="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight">[Agent Name]</h2>
+            <p class="mt-4 text-navy-900/75 leading-relaxed">
+              [Biography placeholder] A luxury-focused agent known for calm guidance, sharp negotiation, and a white-glove client experience.
+              I help buyers move quickly with confidence and help sellers position their home for maximum interest.
+            </p>
+
+            <div class="mt-6 grid sm:grid-cols-4 gap-4">
+              <div class="rounded-2xl border border-navy-900/10 bg-sand-50 px-4 py-3">
+                <div class="text-lg font-semibold">[##]</div>
+                <div class="text-xs text-navy-900/60">Years experience</div>
+              </div>
+              <div class="rounded-2xl border border-navy-900/10 bg-sand-50 px-4 py-3">
+                <div class="text-lg font-semibold">[##]+</div>
+                <div class="text-xs text-navy-900/60">Homes sold</div>
+              </div>
+              <div class="rounded-2xl border border-navy-900/10 bg-sand-50 px-4 py-3">
+                <div class="text-lg font-semibold">$[X]M+</div>
+                <div class="text-xs text-navy-900/60">Sales volume</div>
+              </div>
+              <div class="rounded-2xl border border-navy-900/10 bg-sand-50 px-4 py-3">
+                <div class="text-lg font-semibold">★★★★★</div>
+                <div class="text-xs text-navy-900/60">Satisfaction</div>
+              </div>
+            </div>
+
+            <div class="mt-7 flex flex-col sm:flex-row gap-3">
+              <a href="#contact" class="inline-flex items-center justify-center rounded-full bg-navy-950 px-6 py-3 text-sm font-semibold text-white hover:bg-navy-900">Work with me</a>
+              <a href="#insights" class="inline-flex items-center justify-center rounded-full border border-navy-900/15 px-6 py-3 text-sm font-semibold hover:bg-sand-50">Read market insights</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROPERTY SEARCH -->
+    <section id="search" class="bg-sand-50 border-y border-navy-900/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5">
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Property Search</h2>
+            <p class="mt-2 text-navy-900/70">Mock interface for a future MLS/IDX integration.</p>
+          </div>
+          <p class="text-xs text-navy-900/60">Tip: In production, connect to IDX or curated listings.</p>
+        </div>
+
+        <div class="mt-8 rounded-3xl bg-white border border-navy-900/10 shadow-soft p-5">
+          <form class="grid gap-3 md:grid-cols-12" onsubmit="return false">
+            <div class="md:col-span-4">
+              <label class="text-xs font-semibold text-navy-900/70">Location</label>
+              <input class="mt-1 w-full rounded-2xl border border-navy-900/10 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400/40" placeholder="Neighborhood, city, or ZIP" />
+            </div>
+            <div class="md:col-span-3">
+              <label class="text-xs font-semibold text-navy-900/70">Price Range</label>
+              <select class="mt-1 w-full rounded-2xl border border-navy-900/10 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400/40">
+                <option>$[Min] – $[Max]</option>
+                <option>$500k – $750k</option>
+                <option>$750k – $1M</option>
+                <option>$1M – $2M</option>
+                <option>$2M+</option>
+              </select>
+            </div>
+            <div class="md:col-span-2">
+              <label class="text-xs font-semibold text-navy-900/70">Beds</label>
+              <select class="mt-1 w-full rounded-2xl border border-navy-900/10 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400/40">
+                <option>Any</option>
+                <option>1+</option>
+                <option>2+</option>
+                <option>3+</option>
+                <option>4+</option>
+              </select>
+            </div>
+            <div class="md:col-span-3">
+              <label class="text-xs font-semibold text-navy-900/70">Property Type</label>
+              <select class="mt-1 w-full rounded-2xl border border-navy-900/10 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400/40">
+                <option>Any</option>
+                <option>Single Family</option>
+                <option>Condo / Townhome</option>
+                <option>Multi-unit</option>
+                <option>Luxury / Estate</option>
+              </select>
+            </div>
+            <div class="md:col-span-12 flex flex-col sm:flex-row gap-3 pt-1">
+              <button class="inline-flex items-center justify-center rounded-full bg-navy-950 px-6 py-3 text-sm font-semibold text-white hover:bg-navy-900">Search (demo)</button>
+              <a href="#contact" class="inline-flex items-center justify-center rounded-full border border-navy-900/15 px-6 py-3 text-sm font-semibold hover:bg-sand-50">Get property alerts</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="bg-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+        <div class="flex items-end justify-between gap-6">
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Client Testimonials</h2>
+            <p class="mt-2 text-navy-900/70">Real words build real trust. Add verified reviews here.</p>
+          </div>
+          <div class="hidden sm:block text-sm text-navy-900/60">★★★★★ 5.0 (placeholder)</div>
+        </div>
+
+        <div class="mt-8 grid gap-5 md:grid-cols-3">
+          <figure class="rounded-3xl border border-navy-900/10 bg-sand-50 p-6 shadow-soft">
+            <div class="text-gold-600 text-sm">★★★★★</div>
+            <blockquote class="mt-3 text-sm text-navy-900/80 leading-relaxed">“[Quote placeholder] Clear communication, strong strategy, and we always felt one step ahead.”</blockquote>
+            <figcaption class="mt-4 text-xs text-navy-900/60">[Client Name] • Buyer</figcaption>
+          </figure>
+          <figure class="rounded-3xl border border-navy-900/10 bg-sand-50 p-6 shadow-soft">
+            <div class="text-gold-600 text-sm">★★★★★</div>
+            <blockquote class="mt-3 text-sm text-navy-900/80 leading-relaxed">“[Quote placeholder] Professional marketing and excellent negotiation — the process was smooth.”</blockquote>
+            <figcaption class="mt-4 text-xs text-navy-900/60">[Client Name] • Seller</figcaption>
+          </figure>
+          <figure class="rounded-3xl border border-navy-900/10 bg-sand-50 p-6 shadow-soft">
+            <div class="text-gold-600 text-sm">★★★★★</div>
+            <blockquote class="mt-3 text-sm text-navy-900/80 leading-relaxed">“[Quote placeholder] We got the right home fast and the guidance was straightforward the entire time.”</blockquote>
+            <figcaption class="mt-4 text-xs text-navy-900/60">[Client Name] • Buyer</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="bg-sand-50 border-y border-navy-900/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Services</h2>
+          <p class="mt-2 text-navy-900/70">A premium experience from first call to closing day.</p>
+        </div>
+
+        <div class="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <div class="rounded-3xl bg-white border border-navy-900/10 shadow-soft p-6">
+            <div class="h-10 w-10 rounded-2xl bg-navy-950 text-gold-400 flex items-center justify-center font-semibold">B</div>
+            <h3 class="mt-4 font-semibold">Buying a Home</h3>
+            <p class="mt-2 text-sm text-navy-900/70">Tour planning, offer strategy, and smooth coordination through escrow.</p>
+          </div>
+          <div class="rounded-3xl bg-white border border-navy-900/10 shadow-soft p-6">
+            <div class="h-10 w-10 rounded-2xl bg-navy-950 text-gold-400 flex items-center justify-center font-semibold">S</div>
+            <h3 class="mt-4 font-semibold">Selling Your Home</h3>
+            <p class="mt-2 text-sm text-navy-900/70">Pricing, prep, marketing, and negotiation with weekly clarity updates.</p>
+          </div>
+          <div class="rounded-3xl bg-white border border-navy-900/10 shadow-soft p-6">
+            <div class="h-10 w-10 rounded-2xl bg-navy-950 text-gold-400 flex items-center justify-center font-semibold">L</div>
+            <h3 class="mt-4 font-semibold">Luxury Consulting</h3>
+            <p class="mt-2 text-sm text-navy-900/70">Discreet showings, high-end positioning, and a white-glove client experience.</p>
+          </div>
+          <div class="rounded-3xl bg-white border border-navy-900/10 shadow-soft p-6">
+            <div class="h-10 w-10 rounded-2xl bg-navy-950 text-gold-400 flex items-center justify-center font-semibold">M</div>
+            <h3 class="mt-4 font-semibold">Market Analysis</h3>
+            <p class="mt-2 text-sm text-navy-900/70">Neighborhood pricing insight, comps, and a plan aligned with your goals.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSIGHTS / BLOG -->
+    <section id="insights" class="bg-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Market Insights</h2>
+            <p class="mt-2 text-navy-900/70">Simple, actionable guidance — written for busy buyers and sellers.</p>
+          </div>
+          <a href="#" class="inline-flex items-center justify-center rounded-full border border-navy-900/15 px-5 py-2.5 text-sm font-semibold hover:bg-sand-50">View all articles</a>
+        </div>
+
+        <div class="mt-8 grid gap-5 md:grid-cols-3">
+          <article class="rounded-3xl border border-navy-900/10 bg-sand-50 overflow-hidden shadow-soft">
+            <img class="h-44 w-full object-cover" src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1400&q=80" alt="Market" loading="lazy" />
+            <div class="p-6">
+              <p class="text-xs font-semibold text-gold-600 tracking-widest">INSIGHTS</p>
+              <h3 class="mt-2 font-semibold">Local Housing Market Trends</h3>
+              <p class="mt-2 text-sm text-navy-900/70">[Placeholder] What’s moving in your neighborhood — and what it means for timing.</p>
+              <a href="#" class="mt-4 inline-flex text-sm font-semibold text-navy-950 hover:underline">Read article</a>
+            </div>
+          </article>
+          <article class="rounded-3xl border border-navy-900/10 bg-sand-50 overflow-hidden shadow-soft">
+            <img class="h-44 w-full object-cover" src="https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?auto=format&fit=crop&w=1400&q=80" alt="Neighborhood" loading="lazy" />
+            <div class="p-6">
+              <p class="text-xs font-semibold text-gold-600 tracking-widest">GUIDE</p>
+              <h3 class="mt-2 font-semibold">Best Neighborhoods Guide</h3>
+              <p class="mt-2 text-sm text-navy-900/70">[Placeholder] Lifestyle fit, commute, schools, and the real feel block-by-block.</p>
+              <a href="#" class="mt-4 inline-flex text-sm font-semibold text-navy-950 hover:underline">Read article</a>
+            </div>
+          </article>
+          <article class="rounded-3xl border border-navy-900/10 bg-sand-50 overflow-hidden shadow-soft">
+            <img class="h-44 w-full object-cover" src="https://images.unsplash.com/photo-1560520031-3a4dc4e9de0c?auto=format&fit=crop&w=1400&q=80" alt="First-time" loading="lazy" />
+            <div class="p-6">
+              <p class="text-xs font-semibold text-gold-600 tracking-widest">TIPS</p>
+              <h3 class="mt-2 font-semibold">Tips for First-Time Homebuyers</h3>
+              <p class="mt-2 text-sm text-navy-900/70">[Placeholder] The 5 steps that prevent surprises and keep you on schedule.</p>
+              <a href="#" class="mt-4 inline-flex text-sm font-semibold text-navy-950 hover:underline">Read article</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT / LEAD CAPTURE -->
+    <section id="contact" class="bg-sand-50 border-t border-navy-900/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+        <div class="grid lg:grid-cols-12 gap-10">
+          <div class="lg:col-span-6">
+            <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Contact</h2>
+            <p class="mt-2 text-navy-900/70">Let’s talk about your timeline and priorities. I’ll reply with next steps and a plan.</p>
+
+            <div class="mt-6 rounded-3xl bg-white border border-navy-900/10 shadow-soft p-6">
+              <form class="grid gap-3" onsubmit="return false">
+                <div class="grid sm:grid-cols-2 gap-3">
+                  <div>
+                    <label class="text-xs font-semibold text-navy-900/70">Name</label>
+                    <input class="mt-1 w-full rounded-2xl border border-navy-900/10 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400/40" placeholder="Your name" />
+                  </div>
+                  <div>
+                    <label class="text-xs font-semibold text-navy-900/70">Email</label>
+                    <input class="mt-1 w-full rounded-2xl border border-navy-900/10 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400/40" type="email" placeholder="you@example.com" />
+                  </div>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-3">
+                  <div>
+                    <label class="text-xs font-semibold text-navy-900/70">Phone</label>
+                    <input class="mt-1 w-full rounded-2xl border border-navy-900/10 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400/40" placeholder="(###) ###-####" />
+                  </div>
+                  <div>
+                    <label class="text-xs font-semibold text-navy-900/70">I’m looking to…</label>
+                    <select class="mt-1 w-full rounded-2xl border border-navy-900/10 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400/40">
+                      <option>Buy</option>
+                      <option>Sell</option>
+                      <option>Invest</option>
+                      <option>Just have a question</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <label class="text-xs font-semibold text-navy-900/70">Message</label>
+                  <textarea class="mt-1 w-full rounded-2xl border border-navy-900/10 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400/40" rows="5" placeholder="Timeline, neighborhoods, budget, must-haves…"></textarea>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 pt-1">
+                  <button class="inline-flex items-center justify-center rounded-full bg-navy-950 px-6 py-3 text-sm font-semibold text-white hover:bg-navy-900">Send (demo)</button>
+                  <button data-open-modal="consult" class="inline-flex items-center justify-center rounded-full border border-navy-900/15 px-6 py-3 text-sm font-semibold hover:bg-sand-50">Book Consultation</button>
+                </div>
+                <p class="text-xs text-navy-900/60">Demo-only. Production uses a form backend + consent text.</p>
+              </form>
+            </div>
+
+            <div class="mt-6 grid sm:grid-cols-3 gap-3">
+              <div class="rounded-2xl border border-navy-900/10 bg-white p-4">
+                <div class="text-xs font-semibold text-navy-900/70">Phone</div>
+                <div class="mt-1 text-sm">[Phone]</div>
+              </div>
+              <div class="rounded-2xl border border-navy-900/10 bg-white p-4">
+                <div class="text-xs font-semibold text-navy-900/70">Email</div>
+                <div class="mt-1 text-sm">[Email]</div>
+              </div>
+              <div class="rounded-2xl border border-navy-900/10 bg-white p-4">
+                <div class="text-xs font-semibold text-navy-900/70">Office</div>
+                <div class="mt-1 text-sm">[City / Area]</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6">
+            <div class="rounded-3xl overflow-hidden border border-navy-900/10 shadow-soft bg-white">
+              <div class="h-80 w-full bg-sand-100 flex items-center justify-center">
+                <div class="text-center px-6">
+                  <div class="text-xs font-semibold tracking-widest text-gold-600">MAP PLACEHOLDER</div>
+                  <p class="mt-2 text-sm text-navy-900/70">Embed Google Maps in production.</p>
+                  <div class="mt-5 inline-flex items-center gap-2 rounded-full border border-navy-900/10 bg-white px-4 py-2 text-xs text-navy-900/70">
+                    <span class="h-2 w-2 rounded-full bg-gold-400"></span>
+                    [Office Address / Service Area]
+                  </div>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="font-semibold">Book a private consultation</h3>
+                <p class="mt-2 text-sm text-navy-900/70">We’ll align on goals, timeline, and the best next steps — no pressure.</p>
+                <button data-open-modal="consult" class="mt-4 w-full rounded-full bg-gold-400 px-6 py-3 text-sm font-semibold text-navy-950 hover:bg-gold-500">Book Consultation</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-navy-900/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+        <div class="grid md:grid-cols-12 gap-10">
+          <div class="md:col-span-5">
+            <div class="flex items-center gap-2">
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-navy-950 text-gold-400 font-semibold">K</span>
+              <div>
+                <div class="font-semibold">[Agent Name]</div>
+                <div class="text-sm text-navy-900/60">[Brokerage Name] • [City / Area]</div>
+              </div>
+            </div>
+            <p class="mt-4 text-sm text-navy-900/70">Design direction: Minimal typography and whitespace for a premium feel. (Minimal • Premium • Clean). Replace placeholders with verified details and required disclosures.</p>
+            <div class="mt-4 flex gap-3 text-sm">
+              <a class="text-navy-900/70 hover:text-navy-950" href="#">Instagram</a>
+              <a class="text-navy-900/70 hover:text-navy-950" href="#">Zillow</a>
+              <a class="text-navy-900/70 hover:text-navy-950" href="#">LinkedIn</a>
+            </div>
+          </div>
+
+          <div class="md:col-span-7 grid sm:grid-cols-3 gap-6 text-sm">
+            <div>
+              <div class="font-semibold">Navigate</div>
+              <ul class="mt-3 space-y-2 text-navy-900/70">
+                <li><a class="hover:text-navy-950" href="#listings">Listings</a></li>
+                <li><a class="hover:text-navy-950" href="#about">About</a></li>
+                <li><a class="hover:text-navy-950" href="#services">Services</a></li>
+                <li><a class="hover:text-navy-950" href="#insights">Insights</a></li>
+                <li><a class="hover:text-navy-950" href="#contact">Contact</a></li>
+              </ul>
+            </div>
+            <div>
+              <div class="font-semibold">Lead actions</div>
+              <ul class="mt-3 space-y-2 text-navy-900/70">
+                <li><a class="hover:text-navy-950" href="#search">Search</a></li>
+                <li><a class="hover:text-navy-950" href="#contact">Property alerts</a></li>
+                <li><button data-open-modal="consult" class="hover:text-navy-950">Schedule consult</button></li>
+              </ul>
+            </div>
+            <div>
+              <div class="font-semibold">Brokerage</div>
+              <p class="mt-3 text-navy-900/70">[Brokerage Name]</p>
+              <p class="mt-1 text-navy-900/60 text-xs">(Add required compliance / license text.)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-t border-navy-900/10 pt-6 text-xs text-navy-900/60">
+          <div>© <span id="year"></span> [Agent Name]. All rights reserved.</div>
+          <div>Demo template by Charlie Kon Web Management &amp; Creation</div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Consult Modal -->
+  <div id="modalBackdrop" class="hidden fixed inset-0 z-[60]">
+    <div class="absolute inset-0 bg-navy-950/70" data-close-modal></div>
+    <div class="relative mx-auto max-w-lg px-4 sm:px-6 lg:px-8 h-full flex items-center">
+      <div class="w-full rounded-3xl bg-white border border-navy-900/10 shadow-soft overflow-hidden">
+        <div class="p-6">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h3 class="text-lg font-semibold">Schedule Consultation</h3>
+              <p class="mt-1 text-sm text-navy-900/70">Demo-only. In production, connect Calendly/NexHealth/etc.</p>
+            </div>
+            <button class="h-10 w-10 inline-flex items-center justify-center rounded-xl border border-navy-900/10 hover:bg-sand-50" aria-label="Close" data-close-modal>
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6l-12 12" />
+              </svg>
+            </button>
+          </div>
+
+          <form class="mt-5 grid gap-3" onsubmit="return false">
+            <input class="w-full rounded-2xl border border-navy-900/10 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400/40" placeholder="Name" />
+            <input class="w-full rounded-2xl border border-navy-900/10 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400/40" placeholder="Email" type="email" />
+            <select class="w-full rounded-2xl border border-navy-900/10 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400/40">
+              <option>Preferred time</option>
+              <option>Weekday mornings</option>
+              <option>Weekday afternoons</option>
+              <option>Evenings</option>
+              <option>Weekends</option>
+            </select>
+            <button class="mt-1 inline-flex items-center justify-center rounded-full bg-navy-950 px-6 py-3 text-sm font-semibold text-white hover:bg-navy-900">Request (demo)</button>
+          </form>
+        </div>
+        <div class="px-6 py-4 bg-sand-50 border-t border-navy-900/10 text-xs text-navy-900/60">
+          Tip: Add a real booking link + automated follow-up text/email.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      function closeMobileMenu() {
+        mobileMenu.classList.add('hidden');
+        mobileBtn.setAttribute('aria-expanded', 'false');
+      }
+
+      mobileBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden');
+        mobileBtn.setAttribute('aria-expanded', String(isHidden));
+      });
+
+      mobileMenu.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if (a) closeMobileMenu();
+      });
+
+      const backdrop = document.getElementById('modalBackdrop');
+      const openers = document.querySelectorAll('[data-open-modal="consult"]');
+      const closers = document.querySelectorAll('[data-close-modal]');
+
+      function openModal() {
+        backdrop.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        backdrop.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+
+      openers.forEach(btn => btn.addEventListener('click', () => {
+        closeMobileMenu();
+        openModal();
+      }));
+
+      closers.forEach(el => el.addEventListener('click', closeModal));
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+      });
+    })();
+  </script>
+</body>
+</html>

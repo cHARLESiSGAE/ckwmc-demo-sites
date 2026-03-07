@@ -2,62 +2,728 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Charlie Kon Web Management & Creation — Demo Gallery</title>
-  <meta name="description" content="Private demo concepts for San Diego & Los Angeles real estate agents." />
-  <style>
-    :root{--bg:#0b0f17;--card:#111a2a;--text:#e7eefc;--muted:#a9b6d3;--link:#7ab7ff;--line:rgba(255,255,255,.08)}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(1200px 600px at 20% 0%, rgba(122,183,255,.18), transparent 50%),var(--bg);color:var(--text)}
-    .wrap{max-width:980px;margin:0 auto;padding:42px 16px 60px}
-    .pill{display:inline-block;font-size:12px;color:var(--muted);border:1px solid var(--line);padding:6px 10px;border-radius:999px}
-    h1{margin:14px 0 6px;font-size:34px;letter-spacing:-.02em}
-    p{color:var(--muted);margin:0 0 16px;line-height:1.6}
-    a{color:var(--link);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:18px}
-    .card{grid-column:span 12;background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid var(--line);border-radius:16px;padding:16px}
-    .card h2{margin:0 0 10px;font-size:18px}
-    ul{margin:0;padding-left:18px}
-    li{margin:6px 0}
-    .muted{color:var(--muted)}
-    .footer{margin-top:24px;font-size:12px;color:var(--muted)}
-    @media (min-width:720px){
-      .card.span6{grid-column:span 6}
-      .card.span4{grid-column:span 4}
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Modern Real Estate Website Concepts — Charlie Kon Web Management & Creation</title>
+  <meta name="description" content="Browse premium real estate website design directions. Choose a style, then request a custom version built for your brand." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              950: '#050814',
+              900: '#0B1224',
+              800: '#121B33',
+            },
+            gold: {
+              400: '#D6B15E',
+              500: '#C9A24B',
+              600: '#B88D2F',
+            },
+            sand: {
+              50: '#FAF9F7',
+              100: '#F3F0EA',
+              200: '#EAE5DA'
+            }
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(0,0,0,.08)',
+            glow: '0 0 0 1px rgba(214,177,94,.25), 0 16px 44px rgba(5,8,20,.35)'
+          }
+        }
+      }
     }
+  </script>
+  <style>
+    html{scroll-behavior:smooth}
+    ::selection{background: rgba(214,177,94,.35)}
   </style>
 </head>
-<body>
-  <div class="wrap">
-    <span class="pill">Internal demo gallery</span>
-    <h1>Demo Gallery</h1>
-    <p>Charlie Kon Web Management &amp; Creation — website demo concepts for <strong>San Diego</strong> + <strong>Los Angeles</strong> real estate agents.</p>
+<body class="bg-white text-navy-900 antialiased">
 
-    <div class="grid">
-      <section class="card span6">
-        <h2>Real estate agent demos</h2>
-        <ul>
-          <li><a href="/demo/luxury-template/">Luxury template (Tailwind)</a> <span class="muted">(recommended)</span></li>
-          <li><a href="/demo/sample-agent/">Old sample agent demo</a> <span class="muted">(legacy)</span></li>
-        </ul>
-        <p class="muted" style="margin-top:10px">Each demo lives under <code>/demo/&lt;slug&gt;/</code>.</p>
-      </section>
+  <!-- Sticky nav -->
+  <header class="fixed inset-x-0 top-0 z-50">
+    <div class="backdrop-blur supports-[backdrop-filter]:bg-white/75 bg-white/90 border-b border-navy-900/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <a href="#top" class="flex items-center gap-2">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-navy-950 text-gold-400 font-semibold">K</span>
+            <div class="leading-tight">
+              <div class="text-sm font-semibold tracking-wide">Charlie Kon</div>
+              <div class="text-xs text-navy-900/60">Web Management &amp; Creation</div>
+            </div>
+          </a>
 
-      <section class="card span6">
-        <h2>How we use this</h2>
-        <ul>
-          <li>Create a personalized demo for a specific agent</li>
-          <li>Send a short, 1:1 outreach email asking if they want to see it</li>
-          <li>If they like it, connect their domain + swap in their headshot/logo once permitted</li>
-        </ul>
-      </section>
+          <nav class="hidden md:flex items-center gap-7 text-sm">
+            <a class="hover:text-navy-950 text-navy-900/80" href="#designs">Designs</a>
+            <a class="hover:text-navy-950 text-navy-900/80" href="#custom">Customization</a>
+            <a class="hover:text-navy-950 text-navy-900/80" href="#pricing">Pricing</a>
+            <a class="hover:text-navy-950 text-navy-900/80" href="#process">How it works</a>
+            <a class="hover:text-navy-950 text-navy-900/80" href="#contact">Request</a>
+          </nav>
+
+          <div class="hidden md:flex items-center gap-3">
+            <a href="#designs" class="rounded-full border border-navy-900/15 px-4 py-2 text-sm hover:bg-sand-50">Browse Designs</a>
+            <a href="#contact" class="rounded-full bg-navy-950 px-4 py-2 text-sm text-white shadow-soft hover:bg-navy-900">Request a Custom Version</a>
+          </div>
+
+          <button id="mobileMenuBtn" class="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-navy-900/15 hover:bg-sand-50" aria-label="Open menu" aria-expanded="false">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
 
-    <div class="footer">© <span id="y"></span> Charlie Kon Web Management &amp; Creation</div>
-  </div>
+    <div id="mobileMenu" class="hidden md:hidden border-b border-navy-900/10 bg-white/95 backdrop-blur">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
+        <div class="grid gap-3 text-sm">
+          <a class="py-2" href="#designs">Designs</a>
+          <a class="py-2" href="#custom">Customization</a>
+          <a class="py-2" href="#pricing">Pricing</a>
+          <a class="py-2" href="#process">How it works</a>
+          <a class="py-2" href="#contact">Request</a>
+          <div class="flex gap-3 pt-2">
+            <a href="#designs" class="flex-1 text-center rounded-full border border-navy-900/15 px-4 py-2 hover:bg-sand-50">Browse</a>
+            <a href="#contact" class="flex-1 text-center rounded-full bg-navy-950 px-4 py-2 text-white hover:bg-navy-900">Request</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="pt-16">
+
+    <!-- HERO -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0">
+        <img
+          class="h-full w-full object-cover"
+          src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=2600&q=80"
+          alt="Luxury home"
+          loading="eager"
+        />
+        <div class="absolute inset-0 bg-gradient-to-b from-navy-950/75 via-navy-950/60 to-navy-950/85"></div>
+        <div class="absolute inset-0" style="background:radial-gradient(900px 520px at 22% 20%, rgba(214,177,94,.18), transparent 55%)"></div>
+      </div>
+
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="py-14 sm:py-20">
+          <p class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs text-white/90">
+            <span class="h-2 w-2 rounded-full bg-gold-400"></span>
+            Modern real estate website concepts
+          </p>
+
+          <h1 class="mt-5 max-w-3xl text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-white">
+            Choose the Website Style That Fits Your Brand
+          </h1>
+          <p class="mt-5 max-w-2xl text-base sm:text-lg text-white/80">
+            Browse design directions created specifically for real estate professionals.
+            Pick a style you like — then we tailor it to your market, branding, brokerage requirements, and lead goals.
+          </p>
+
+          <div class="mt-8 flex flex-col sm:flex-row gap-3">
+            <a href="#designs" class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-navy-950 shadow-glow hover:bg-sand-50">
+              Browse Designs
+            </a>
+            <a href="#contact" class="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white hover:bg-white/15">
+              Request a Custom Version
+            </a>
+          </div>
+
+          <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl">
+            <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+              <div class="text-lg font-semibold text-white">Mobile-first</div>
+              <div class="text-xs text-white/70">Designed to convert on phones</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+              <div class="text-lg font-semibold text-white">High-trust</div>
+              <div class="text-xs text-white/70">Credibility + clarity</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+              <div class="text-lg font-semibold text-white">Custom-built</div>
+              <div class="text-xs text-white/70">Not a one-size template</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+              <div class="text-lg font-semibold text-white">Fast launch</div>
+              <div class="text-xs text-white/70">From demo → live site</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="bg-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+        <div class="grid lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-5">
+            <p class="text-xs font-semibold tracking-widest text-gold-600">WHY THIS MATTERS</p>
+            <h2 class="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight">A site that looks premium — and gets inquiries.</h2>
+            <p class="mt-4 text-navy-900/75 leading-relaxed">
+              Most agents lose leads because their online presence feels generic, slow, or unclear.
+              These concepts are built to make visitors feel confident — and take action.
+            </p>
+          </div>
+          <div class="lg:col-span-7 grid sm:grid-cols-2 gap-5">
+            <div class="rounded-3xl border border-navy-900/10 bg-sand-50 p-6 shadow-soft">
+              <div class="text-sm font-semibold">Attract higher-quality leads</div>
+              <p class="mt-2 text-sm text-navy-900/70">Clear messaging, strong calls-to-action, and trust cues that feel professional.</p>
+            </div>
+            <div class="rounded-3xl border border-navy-900/10 bg-sand-50 p-6 shadow-soft">
+              <div class="text-sm font-semibold">Mobile-friendly by default</div>
+              <p class="mt-2 text-sm text-navy-900/70">Designed mobile-first so the experience stays premium on any device.</p>
+            </div>
+            <div class="rounded-3xl border border-navy-900/10 bg-sand-50 p-6 shadow-soft">
+              <div class="text-sm font-semibold">Built for trust</div>
+              <p class="mt-2 text-sm text-navy-900/70">Reviews, stats, and credibility sections — without looking cluttered.</p>
+            </div>
+            <div class="rounded-3xl border border-navy-900/10 bg-sand-50 p-6 shadow-soft">
+              <div class="text-sm font-semibold">Fits solo agents or teams</div>
+              <p class="mt-2 text-sm text-navy-900/70">We can tailor for new agents, teams, or brokerages with required disclosures.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESIGNS -->
+    <section id="designs" class="bg-sand-50 border-y border-navy-900/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold tracking-widest text-gold-600">DESIGN OPTIONS</p>
+            <h2 class="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight">Pick a style direction</h2>
+            <p class="mt-3 text-navy-900/70 max-w-2xl">Each design is a starting point. We customize the typography, sections, imagery, and lead flow to match your brand and market.</p>
+          </div>
+          <a href="#contact" class="inline-flex items-center justify-center rounded-full bg-navy-950 px-5 py-2.5 text-sm font-semibold text-white shadow-soft hover:bg-navy-900">Request a custom demo</a>
+        </div>
+
+        <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+
+          <!-- Card helper: image + overlay -->
+          <article class="group rounded-3xl bg-white border border-navy-900/10 shadow-soft overflow-hidden">
+            <div class="relative">
+              <img class="h-52 w-full object-cover" src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1600&q=80" alt="Signature Luxury" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy-950/55 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <div class="flex items-end justify-between gap-3">
+                  <div>
+                    <div class="text-white font-semibold text-lg">Signature Luxury</div>
+                    <div class="text-white/80 text-xs">High-end, editorial presentation</div>
+                  </div>
+                  <span class="text-xs font-semibold text-gold-400 bg-gold-400/15 border border-gold-400/25 px-3 py-1 rounded-full">Popular</span>
+                </div>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Luxury</span>
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Editorial</span>
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">High-trust</span>
+              </div>
+              <p class="mt-3 text-sm text-navy-900/70">Best for agents who want a premium brand impression and a clean lead flow.</p>
+              <div class="mt-4 flex gap-3">
+                <a href="/demo/luxury-template/" class="flex-1 inline-flex items-center justify-center rounded-full bg-navy-950 px-4 py-2 text-sm font-semibold text-white hover:bg-navy-900">Preview Design</a>
+                <a href="#contact" class="inline-flex items-center justify-center rounded-full border border-navy-900/15 px-4 py-2 text-sm font-semibold hover:bg-sand-50">Use this style</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-3xl bg-white border border-navy-900/10 shadow-soft overflow-hidden">
+            <div class="relative">
+              <img class="h-52 w-full object-cover" src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1600&q=80" alt="Coastal Modern" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy-950/55 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <div class="text-white font-semibold text-lg">Coastal Modern</div>
+                <div class="text-white/80 text-xs">Bright, airy, calm</div>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Coastal</span>
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Modern</span>
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Bright</span>
+              </div>
+              <p class="mt-3 text-sm text-navy-900/70">Great for beach markets and lifestyle-driven positioning.</p>
+              <div class="mt-4 flex gap-3">
+                <a href="/demo/coastal-modern/" class="flex-1 inline-flex items-center justify-center rounded-full bg-navy-950 px-4 py-2 text-sm font-semibold text-white hover:bg-navy-900">Preview Design</a>
+                <a href="#contact" class="inline-flex items-center justify-center rounded-full border border-navy-900/15 px-4 py-2 text-sm font-semibold hover:bg-sand-50">Use this style</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-3xl bg-white border border-navy-900/10 shadow-soft overflow-hidden">
+            <div class="relative">
+              <img class="h-52 w-full object-cover" src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=1600&q=80" alt="Minimal Prestige" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy-950/55 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <div class="text-white font-semibold text-lg">Minimal Prestige</div>
+                <div class="text-white/80 text-xs">Whitespace + premium typography</div>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Minimal</span>
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Premium</span>
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Clean</span>
+              </div>
+              <p class="mt-3 text-sm text-navy-900/70">Ideal for agents who want a subtle, understated luxury look.</p>
+              <div class="mt-4 flex gap-3">
+                <a href="/demo/minimal-prestige/" class="flex-1 inline-flex items-center justify-center rounded-full bg-navy-950 px-4 py-2 text-sm font-semibold text-white hover:bg-navy-900">Preview Design</a>
+                <a href="#contact" class="inline-flex items-center justify-center rounded-full border border-navy-900/15 px-4 py-2 text-sm font-semibold hover:bg-sand-50">Use this style</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-3xl bg-white border border-navy-900/10 shadow-soft overflow-hidden">
+            <div class="relative">
+              <img class="h-52 w-full object-cover" src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=80" alt="Brokerage Pro" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy-950/55 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <div class="text-white font-semibold text-lg">Brokerage Pro</div>
+                <div class="text-white/80 text-xs">Team-ready credibility sections</div>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Team</span>
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Brokerage</span>
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Credibility</span>
+              </div>
+              <p class="mt-3 text-sm text-navy-900/70">Best for teams, partners, and brokerage-branded sites.</p>
+              <div class="mt-4 flex gap-3">
+                <a href="/demo/brokerage-pro/" class="flex-1 inline-flex items-center justify-center rounded-full bg-navy-950 px-4 py-2 text-sm font-semibold text-white hover:bg-navy-900">Preview Design</a>
+                <a href="#contact" class="inline-flex items-center justify-center rounded-full border border-navy-900/15 px-4 py-2 text-sm font-semibold hover:bg-sand-50">Use this style</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-3xl bg-white border border-navy-900/10 shadow-soft overflow-hidden">
+            <div class="relative">
+              <img class="h-52 w-full object-cover" src="https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=1600&q=80" alt="Neighborhood Expert" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy-950/55 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <div class="text-white font-semibold text-lg">Neighborhood Expert</div>
+                <div class="text-white/80 text-xs">Local guides + market pages</div>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Local</span>
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Guides</span>
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">SEO-ready</span>
+              </div>
+              <p class="mt-3 text-sm text-navy-900/70">Great for agents building authority neighborhood-by-neighborhood.</p>
+              <div class="mt-4 flex gap-3">
+                <a href="/demo/neighborhood-expert/" class="flex-1 inline-flex items-center justify-center rounded-full bg-navy-950 px-4 py-2 text-sm font-semibold text-white hover:bg-navy-900">Preview Design</a>
+                <a href="#contact" class="inline-flex items-center justify-center rounded-full border border-navy-900/15 px-4 py-2 text-sm font-semibold hover:bg-sand-50">Use this style</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-3xl bg-white border border-navy-900/10 shadow-soft overflow-hidden">
+            <div class="relative">
+              <img class="h-52 w-full object-cover" src="https://images.unsplash.com/photo-1449247709967-d4461a6a6103?auto=format&fit=crop&w=1600&q=80" alt="Urban Edge" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy-950/55 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <div class="text-white font-semibold text-lg">Urban Edge</div>
+                <div class="text-white/80 text-xs">Bold grid for city markets</div>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Urban</span>
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Bold</span>
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Modern</span>
+              </div>
+              <p class="mt-3 text-sm text-navy-900/70">Perfect for downtown condos, modern builds, and high-energy brands.</p>
+              <div class="mt-4 flex gap-3">
+                <a href="/demo/urban-edge/" class="flex-1 inline-flex items-center justify-center rounded-full bg-navy-950 px-4 py-2 text-sm font-semibold text-white hover:bg-navy-900">Preview Design</a>
+                <a href="#contact" class="inline-flex items-center justify-center rounded-full border border-navy-900/15 px-4 py-2 text-sm font-semibold hover:bg-sand-50">Use this style</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-3xl bg-white border border-navy-900/10 shadow-soft overflow-hidden">
+            <div class="relative">
+              <img class="h-52 w-full object-cover" src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1600&q=80" alt="Editorial Living" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy-950/55 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <div class="text-white font-semibold text-lg">Editorial Living</div>
+                <div class="text-white/80 text-xs">Magazine-style lifestyle</div>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Editorial</span>
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Lifestyle</span>
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Story</span>
+              </div>
+              <p class="mt-3 text-sm text-navy-900/70">Designed for agents who want to sell lifestyle, not just specs.</p>
+              <div class="mt-4 flex gap-3">
+                <a href="/demo/editorial-living/" class="flex-1 inline-flex items-center justify-center rounded-full bg-navy-950 px-4 py-2 text-sm font-semibold text-white hover:bg-navy-900">Preview Design</a>
+                <a href="#contact" class="inline-flex items-center justify-center rounded-full border border-navy-900/15 px-4 py-2 text-sm font-semibold hover:bg-sand-50">Use this style</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-3xl bg-white border border-navy-900/10 shadow-soft overflow-hidden">
+            <div class="relative">
+              <img class="h-52 w-full object-cover" src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1600&q=80" alt="Lead Conversion" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy-950/55 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <div class="text-white font-semibold text-lg">Lead Conversion</div>
+                <div class="text-white/80 text-xs">CTA-first, fast inquiry flow</div>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Conversion</span>
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">CTA</span>
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Fast</span>
+              </div>
+              <p class="mt-3 text-sm text-navy-900/70">For agents who want more form submissions and consult bookings.</p>
+              <div class="mt-4 flex gap-3">
+                <a href="/demo/lead-conversion/" class="flex-1 inline-flex items-center justify-center rounded-full bg-navy-950 px-4 py-2 text-sm font-semibold text-white hover:bg-navy-900">Preview Design</a>
+                <a href="#contact" class="inline-flex items-center justify-center rounded-full border border-navy-900/15 px-4 py-2 text-sm font-semibold hover:bg-sand-50">Use this style</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-3xl bg-white border border-navy-900/10 shadow-soft overflow-hidden">
+            <div class="relative">
+              <img class="h-52 w-full object-cover" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80" alt="Classic Showcase" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy-950/55 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <div class="text-white font-semibold text-lg">Classic Showcase</div>
+                <div class="text-white/80 text-xs">Timeless, familiar, polished</div>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Classic</span>
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Trust</span>
+                <span class="rounded-full bg-sand-50 border border-navy-900/10 px-3 py-1">Simple</span>
+              </div>
+              <p class="mt-3 text-sm text-navy-900/70">A straightforward, trusted feel for broad appeal across markets.</p>
+              <div class="mt-4 flex gap-3">
+                <a href="/demo/classic-showcase/" class="flex-1 inline-flex items-center justify-center rounded-full bg-navy-950 px-4 py-2 text-sm font-semibold text-white hover:bg-navy-900">Preview Design</a>
+                <a href="#contact" class="inline-flex items-center justify-center rounded-full border border-navy-900/15 px-4 py-2 text-sm font-semibold hover:bg-sand-50">Use this style</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CUSTOMIZATION -->
+    <section id="custom" class="bg-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+        <div class="grid lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-5">
+            <p class="text-xs font-semibold tracking-widest text-gold-600">CUSTOMIZATION</p>
+            <h2 class="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight">Starting point, not a rigid package.</h2>
+            <p class="mt-4 text-navy-900/75 leading-relaxed">We tailor your chosen design direction to your brand and market. You get a site that feels like you — not a generic template.</p>
+          </div>
+          <div class="lg:col-span-7">
+            <div class="rounded-3xl border border-navy-900/10 bg-sand-50 p-6 shadow-soft">
+              <div class="grid sm:grid-cols-2 gap-4 text-sm text-navy-900/80">
+                <div class="flex gap-3">
+                  <span class="mt-1 h-2.5 w-2.5 rounded-full bg-gold-400"></span>
+                  <span>Agent branding, brokerage colors, typography</span>
+                </div>
+                <div class="flex gap-3">
+                  <span class="mt-1 h-2.5 w-2.5 rounded-full bg-gold-400"></span>
+                  <span>Contact details, service areas, map + CTA flow</span>
+                </div>
+                <div class="flex gap-3">
+                  <span class="mt-1 h-2.5 w-2.5 rounded-full bg-gold-400"></span>
+                  <span>Testimonials, reviews, stats, credibility sections</span>
+                </div>
+                <div class="flex gap-3">
+                  <span class="mt-1 h-2.5 w-2.5 rounded-full bg-gold-400"></span>
+                  <span>Featured listings, property cards, IDX-ready layout</span>
+                </div>
+                <div class="flex gap-3">
+                  <span class="mt-1 h-2.5 w-2.5 rounded-full bg-gold-400"></span>
+                  <span>Headshots and logos (when you approve assets)</span>
+                </div>
+                <div class="flex gap-3">
+                  <span class="mt-1 h-2.5 w-2.5 rounded-full bg-gold-400"></span>
+                  <span>Lead forms, booking links, neighborhood content</span>
+                </div>
+              </div>
+              <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                <a href="#contact" class="inline-flex items-center justify-center rounded-full bg-navy-950 px-6 py-3 text-sm font-semibold text-white hover:bg-navy-900">Request your personalized version</a>
+                <a href="#designs" class="inline-flex items-center justify-center rounded-full border border-navy-900/15 px-6 py-3 text-sm font-semibold hover:bg-white">Browse designs again</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLEXIBLE PRICING -->
+    <section id="pricing" class="bg-sand-50 border-y border-navy-900/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+        <div class="grid lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-5">
+            <p class="text-xs font-semibold tracking-widest text-gold-600">FLEXIBLE PRICING</p>
+            <h2 class="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight">Custom-built — with options that fit your stage.</h2>
+            <p class="mt-4 text-navy-900/75 leading-relaxed">
+              Every site is scoped to your needs. Starter options are available for newer agents, and premium builds are available for advanced features.
+              Final pricing depends on pages, branding, copywriting, integrations, and customization.
+            </p>
+          </div>
+          <div class="lg:col-span-7">
+            <div class="rounded-3xl bg-white border border-navy-900/10 shadow-soft p-6">
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div class="rounded-2xl border border-navy-900/10 bg-sand-50 p-5">
+                  <div class="text-sm font-semibold">Starter builds</div>
+                  <p class="mt-2 text-sm text-navy-900/70">A clean, modern presence with strong calls-to-action — ideal for newer agents.</p>
+                </div>
+                <div class="rounded-2xl border border-navy-900/10 bg-sand-50 p-5">
+                  <div class="text-sm font-semibold">Premium builds</div>
+                  <p class="mt-2 text-sm text-navy-900/70">More pages, advanced sections, richer content, integrations, and higher polish.</p>
+                </div>
+              </div>
+              <div class="mt-6 rounded-2xl border border-navy-900/10 bg-white p-5">
+                <div class="text-sm font-semibold">Optional ongoing support</div>
+                <p class="mt-2 text-sm text-navy-900/70">Hosting + maintenance options may be available depending on your setup and needs.</p>
+              </div>
+              <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                <a href="#contact" class="inline-flex items-center justify-center rounded-full bg-gold-400 px-6 py-3 text-sm font-semibold text-navy-950 hover:bg-gold-500">Ask about pricing</a>
+                <a href="#contact" class="inline-flex items-center justify-center rounded-full border border-navy-900/15 px-6 py-3 text-sm font-semibold hover:bg-sand-50">Request a quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="process" class="bg-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <div>
+            <p class="text-xs font-semibold tracking-widest text-gold-600">HOW IT WORKS</p>
+            <h2 class="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight">Simple, fast, and guided.</h2>
+            <p class="mt-3 text-navy-900/70 max-w-2xl">You choose a direction. We tailor it to your brand. Then we launch a site you’re proud to send clients to.</p>
+          </div>
+        </div>
+
+        <div class="mt-8 grid gap-5 md:grid-cols-4">
+          <div class="rounded-3xl border border-navy-900/10 bg-sand-50 p-6 shadow-soft">
+            <div class="text-xs font-semibold text-gold-600">01</div>
+            <div class="mt-2 font-semibold">Choose a design direction</div>
+            <p class="mt-2 text-sm text-navy-900/70">Pick the style that fits your brand and market.</p>
+          </div>
+          <div class="rounded-3xl border border-navy-900/10 bg-sand-50 p-6 shadow-soft">
+            <div class="text-xs font-semibold text-gold-600">02</div>
+            <div class="mt-2 font-semibold">Request your personalized version</div>
+            <p class="mt-2 text-sm text-navy-900/70">We tailor layout, colors, copy, and lead flow.</p>
+          </div>
+          <div class="rounded-3xl border border-navy-900/10 bg-sand-50 p-6 shadow-soft">
+            <div class="text-xs font-semibold text-gold-600">03</div>
+            <div class="mt-2 font-semibold">Review and refine</div>
+            <p class="mt-2 text-sm text-navy-900/70">Quick revisions until it feels right.</p>
+          </div>
+          <div class="rounded-3xl border border-navy-900/10 bg-sand-50 p-6 shadow-soft">
+            <div class="text-xs font-semibold text-gold-600">04</div>
+            <div class="mt-2 font-semibold">Launch your upgraded website</div>
+            <p class="mt-2 text-sm text-navy-900/70">Connect your domain and start sending traffic confidently.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-navy-950 text-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+        <div class="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-glow">
+          <div class="grid lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-8">
+              <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Want a version customized for your brand?</h2>
+              <p class="mt-3 text-white/80">Tell me your market, brokerage, and what you want the site to do. I’ll recommend a direction and build a personalized version.</p>
+            </div>
+            <div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3">
+              <a href="#contact" class="inline-flex items-center justify-center rounded-full bg-gold-400 px-6 py-3 text-sm font-semibold text-navy-950 hover:bg-gold-500">Request a Custom Demo</a>
+              <a href="#contact" class="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white hover:bg-white/15">Ask About Pricing</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="bg-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+        <div class="grid lg:grid-cols-12 gap-10">
+          <div class="lg:col-span-5">
+            <p class="text-xs font-semibold tracking-widest text-gold-600">REQUEST</p>
+            <h2 class="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight">Request your personalized demo</h2>
+            <p class="mt-4 text-navy-900/75 leading-relaxed">
+              Share your name, market, and brokerage. If you already know your favorite style, tell me which one.
+              I’ll reply with next steps and a simple scope.
+            </p>
+            <div class="mt-6 rounded-3xl border border-navy-900/10 bg-sand-50 p-6 shadow-soft">
+              <div class="text-sm font-semibold">Charlie Kon</div>
+              <div class="mt-2 text-sm text-navy-900/70">Charlie Kon Web Management &amp; Creation</div>
+              <div class="mt-4 text-sm text-navy-900/70">
+                Email: <a class="text-navy-950 font-semibold hover:underline" href="mailto:charlespkon@gmail.com">charlespkon@gmail.com</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7">
+            <div class="rounded-3xl bg-sand-50 border border-navy-900/10 shadow-soft p-6">
+              <form class="grid gap-3" onsubmit="return false">
+                <div class="grid sm:grid-cols-2 gap-3">
+                  <div>
+                    <label class="text-xs font-semibold text-navy-900/70">Name</label>
+                    <input id="f_name" class="mt-1 w-full rounded-2xl border border-navy-900/10 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400/40" placeholder="Your name" />
+                  </div>
+                  <div>
+                    <label class="text-xs font-semibold text-navy-900/70">Email</label>
+                    <input id="f_email" class="mt-1 w-full rounded-2xl border border-navy-900/10 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400/40" type="email" placeholder="you@example.com" />
+                  </div>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-3">
+                  <div>
+                    <label class="text-xs font-semibold text-navy-900/70">Market (city/area)</label>
+                    <input id="f_market" class="mt-1 w-full rounded-2xl border border-navy-900/10 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400/40" placeholder="San Diego, CA" />
+                  </div>
+                  <div>
+                    <label class="text-xs font-semibold text-navy-900/70">Brokerage</label>
+                    <input id="f_brokerage" class="mt-1 w-full rounded-2xl border border-navy-900/10 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400/40" placeholder="[Brokerage Name]" />
+                  </div>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-3">
+                  <div>
+                    <label class="text-xs font-semibold text-navy-900/70">Favorite style</label>
+                    <select id="f_style" class="mt-1 w-full rounded-2xl border border-navy-900/10 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400/40">
+                      <option value="Not sure yet">Not sure yet</option>
+                      <option>Signature Luxury</option>
+                      <option>Coastal Modern</option>
+                      <option>Minimal Prestige</option>
+                      <option>Brokerage Pro</option>
+                      <option>Neighborhood Expert</option>
+                      <option>Urban Edge</option>
+                      <option>Editorial Living</option>
+                      <option>Lead Conversion</option>
+                      <option>Classic Showcase</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="text-xs font-semibold text-navy-900/70">Timeline</label>
+                    <select id="f_timeline" class="mt-1 w-full rounded-2xl border border-navy-900/10 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400/40">
+                      <option>ASAP</option>
+                      <option>1–2 weeks</option>
+                      <option>2–4 weeks</option>
+                      <option>Just exploring</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <label class="text-xs font-semibold text-navy-900/70">Notes</label>
+                  <textarea id="f_notes" class="mt-1 w-full rounded-2xl border border-navy-900/10 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400/40" rows="5" placeholder="Tell me what you want the website to do (leads, booking, alerts, listings link, neighborhoods)…"></textarea>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3 pt-1">
+                  <button id="sendBtn" class="inline-flex items-center justify-center rounded-full bg-navy-950 px-6 py-3 text-sm font-semibold text-white hover:bg-navy-900">Request a Custom Demo</button>
+                  <a href="#designs" class="inline-flex items-center justify-center rounded-full border border-navy-900/15 px-6 py-3 text-sm font-semibold hover:bg-white">Browse again</a>
+                </div>
+
+                <p class="text-xs text-navy-900/60">This page is a static showcase. Clicking “Request” opens an email draft.</p>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-navy-900/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+        <div class="grid md:grid-cols-12 gap-10">
+          <div class="md:col-span-6">
+            <div class="flex items-center gap-2">
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-navy-950 text-gold-400 font-semibold">K</span>
+              <div>
+                <div class="font-semibold">Charlie Kon</div>
+                <div class="text-sm text-navy-900/60">Web Management &amp; Creation</div>
+              </div>
+            </div>
+            <p class="mt-4 text-sm text-navy-900/70">Premium real estate websites built for trust, clarity, and lead flow — tailored to your brand and brokerage requirements.</p>
+          </div>
+          <div class="md:col-span-6 grid sm:grid-cols-2 gap-6 text-sm">
+            <div>
+              <div class="font-semibold">Explore</div>
+              <ul class="mt-3 space-y-2 text-navy-900/70">
+                <li><a class="hover:text-navy-950" href="#designs">Design options</a></li>
+                <li><a class="hover:text-navy-950" href="#custom">Customization</a></li>
+                <li><a class="hover:text-navy-950" href="#pricing">Pricing approach</a></li>
+                <li><a class="hover:text-navy-950" href="#process">How it works</a></li>
+              </ul>
+            </div>
+            <div>
+              <div class="font-semibold">Contact</div>
+              <ul class="mt-3 space-y-2 text-navy-900/70">
+                <li><a class="hover:text-navy-950" href="mailto:charlespkon@gmail.com">charlespkon@gmail.com</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-t border-navy-900/10 pt-6 text-xs text-navy-900/60">
+          <div>© <span id="year"></span> Charlie Kon Web Management &amp; Creation</div>
+          <div>San Diego + Los Angeles</div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    (function () {
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      function closeMobileMenu(){ mobileMenu.classList.add('hidden'); mobileBtn.setAttribute('aria-expanded','false'); }
+      mobileBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden');
+        mobileBtn.setAttribute('aria-expanded', String(isHidden));
+      });
+      mobileMenu.addEventListener('click', (e) => { if (e.target.closest('a')) closeMobileMenu(); });
+
+      const sendBtn = document.getElementById('sendBtn');
+      const g = (id) => (document.getElementById(id)?.value || '').trim();
+      sendBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const name = g('f_name');
+        const email = g('f_email');
+        const market = g('f_market');
+        const brokerage = g('f_brokerage');
+        const style = g('f_style');
+        const timeline = g('f_timeline');
+        const notes = g('f_notes');
+
+        const subject = encodeURIComponent(`Real estate website demo request — ${name || 'New inquiry'}`);
+        const body = encodeURIComponent(
+          `Hi Charlie,\n\nI’d like a customized version of one of your real estate website concepts.\n\nName: ${name}\nEmail: ${email}\nMarket: ${market}\nBrokerage: ${brokerage}\nFavorite style: ${style}\nTimeline: ${timeline}\n\nNotes:\n${notes}\n`
+        );
+
+        window.location.href = `mailto:charlespkon@gmail.com?subject=${subject}&body=${body}`;
+      });
+    })();
   </script>
 </body>
 </html>
