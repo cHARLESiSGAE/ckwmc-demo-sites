@@ -9,6 +9,9 @@ export default function Home() {
           <h1 className="mt-3 text-4xl md:text-6xl font-bold tracking-tight">
             Make a website like this.
           </h1>
+          <p className="mt-2 text-xs text-neutral-500">
+            Deployed from <code className="text-neutral-400">apps/charlie-kon-web-designer</code>.
+          </p>
           <p className="mt-4 max-w-2xl text-neutral-300">
             Interactive 3D hero section powered by Spline + shadcn/ui + Tailwind.
             Send me the rest of the 21stdev components you want and I’ll slot them in.
