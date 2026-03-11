@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sample Agent — San Diego, CA (Demo)</title>
+  <meta name="description" content="Demo homepage concept for a modern real estate agent website." />
+  <style>
+    :root{--bg:#0b0f17;--card:#111a2a;--text:#e7eefc;--muted:#a9b6d3;--line:rgba(255,255,255,.08);--accent:#7ab7ff}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{max-width:980px;margin:0 auto;padding:42px 16px 60px}
+    .hero{display:grid;gap:18px;grid-template-columns:1fr}
+    .badge{display:inline-block;font-size:12px;color:var(--muted);border:1px solid var(--line);padding:6px 10px;border-radius:999px}
+    h1{margin:12px 0 8px;font-size:40px;letter-spacing:-.03em}
+    p{margin:0 0 14px;color:var(--muted);line-height:1.6}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid var(--line);text-decoration:none;color:var(--text)}
+    .btn.primary{background:linear-gradient(180deg, rgba(122,183,255,.25), rgba(122,183,255,.10));border-color:rgba(122,183,255,.35)}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;margin-top:22px}
+    .card{grid-column:span 12;background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid var(--line);border-radius:16px;padding:16px}
+    .card h2{margin:0 0 8px;font-size:16px}
+    .muted{color:var(--muted)}
+    @media (min-width:860px){
+      .hero{grid-template-columns:1.1fr .9fr;align-items:start}
+      .card.span6{grid-column:span 6}
+      .card.span4{grid-column:span 4}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <span class="badge">Demo concept • San Diego, CA</span>
+        <h1>Buy with confidence. Sell with a plan.</h1>
+        <p>A calm, responsive real estate agent focused on clear next steps — tours, offers, negotiations, and a smooth close.</p>
+        <div class="actions">
+          <a class="btn primary" href="#contact">Request a Call</a>
+          <a class="btn" href="#areas">Explore neighborhoods</a>
+        </div>
+        <p class="muted" style="margin-top:12px;font-size:13px">This is a placeholder demo. Final site would use your branding, headshot, listings links, and compliant disclosures.</p>
+      </div>
+
+      <div class="card">
+        <h2>Quick contact</h2>
+        <p class="muted" style="margin-bottom:10px">Replace with agent phone/email once verified.</p>
+        <div class="actions">
+          <a class="btn" href="#contact">Email</a>
+          <a class="btn" href="#contact">Call/Text</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <section class="card span4">
+        <h2>For buyers</h2>
+        <p class="muted">Tour strategy, offer guidance, inspection/repair coordination, and clear timelines.</p>
+      </section>
+      <section class="card span4">
+        <h2>For sellers</h2>
+        <p class="muted">Pricing, prep, marketing, and negotiation — with a simple weekly update cadence.</p>
+      </section>
+      <section class="card span4">
+        <h2>Local focus</h2>
+        <p class="muted">San Diego neighborhoods + lifestyle fit, not just bedrooms and bathrooms.</p>
+      </section>
+
+      <section id="areas" class="card span6">
+        <h2>Areas served (examples)</h2>
+        <p class="muted">Downtown • North Park • Mission Valley • Clairemont • Point Loma • La Jolla</p>
+      </section>
+      <section id="contact" class="card span6">
+        <h2>Request a call</h2>
+        <p class="muted">Demo-only form. Production uses a secure form backend + consent language.</p>
+        <form>
+          <div style="display:grid;grid-template-columns:1fr;gap:10px">
+            <input placeholder="Name" style="padding:10px;border-radius:12px;border:1px solid var(--line);background:transparent;color:var(--text)" />
+            <input placeholder="Email" style="padding:10px;border-radius:12px;border:1px solid var(--line);background:transparent;color:var(--text)" />
+            <input placeholder="Phone (optional)" style="padding:10px;border-radius:12px;border:1px solid var(--line);background:transparent;color:var(--text)" />
+            <textarea placeholder="What are you looking for? Timeline, city, budget…" rows="4" style="padding:10px;border-radius:12px;border:1px solid var(--line);background:transparent;color:var(--text)"></textarea>
+            <button type="button" class="btn primary" style="cursor:not-allowed;opacity:.7">Send (demo)</button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <p class="muted" style="margin-top:22px;font-size:12px">Demo built by Charlie Kon Web Management &amp; Creation.</p>
+  </div>
+</body>
+</html>
