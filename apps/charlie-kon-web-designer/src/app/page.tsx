@@ -1,4 +1,5 @@
 import { SplineSceneBasic } from "@/components/ui/demo";
+import { FeaturesSectionWithHoverEffects } from "@/components/ui/feature-section-with-hover-effects";
 
 export default function Home() {
   return (
@@ -19,6 +20,20 @@ export default function Home() {
         </div>
 
         <SplineSceneBasic />
+
+        <section className="mt-14">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
+            What you get
+          </h2>
+          <p className="mt-3 max-w-2xl text-neutral-300">
+            Same ideas from the old gallery site — mobile-first, high-trust, custom-built,
+            fast launch — but aimed at hiring me to build your site.
+          </p>
+
+          <div className="mt-6">
+            <FeaturesSectionWithHoverEffects />
+          </div>
+        </section>
       </main>
     </div>
   );
