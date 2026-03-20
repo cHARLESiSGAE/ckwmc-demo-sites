@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0b1022"/>
+      <stop offset="1" stop-color="#05070e"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="35%" cy="30%" r="70%">
+      <stop offset="0" stop-color="#D6FF2A" stop-opacity="0.35"/>
+      <stop offset="0.55" stop-color="#14B8A6" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#8B5CF6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#bg)"/>
+  <rect width="1200" height="1500" fill="url(#glow)"/>
+
+  <!-- Placeholder hero image. Replace with a real photo at assets/wakyzaky-hero.jpg (and update index.html). -->
+  <g fill="none" stroke="#EEF5FF" stroke-opacity="0.22">
+    <rect x="110" y="140" width="980" height="1220" rx="40"/>
+  </g>
+
+  <g font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" fill="#EEF5FF">
+    <text x="600" y="720" font-size="48" text-anchor="middle" fill-opacity="0.92">Wakyzaky</text>
+    <text x="600" y="780" font-size="22" text-anchor="middle" fill-opacity="0.68">Hero image placeholder</text>
+    <text x="600" y="830" font-size="18" text-anchor="middle" fill-opacity="0.62">Replace this SVG with your uploaded photo</text>
+  </g>
+
+  <!-- Neon accent line -->
+  <rect x="210" y="900" width="780" height="10" rx="5" fill="#D6FF2A" fill-opacity="0.75"/>
+</svg>

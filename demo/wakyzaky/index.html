@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Wakyzaky — Music & Pickleball | Prosper, TX" />
+  <title>Wakyzaky | Music & Pickleball</title>
+
+  <style>
+    /* =========================================================
+       STYLE GOAL
+       - Professional but fun
+       - Neon yellow accent (requested)
+       - Tasteful, modern animations (no chaos)
+       - Fast, readable, accessible (reduced-motion support)
+    ========================================================= */
+
+    :root{
+      --bg0:#05070E;
+      --bg1:#070B18;
+      --card: rgba(255,255,255,0.06);
+      --text:#EEF5FF;
+      --muted: rgba(238,245,255,0.74);
+      --muted2: rgba(238,245,255,0.60);
+
+      /* Neon yellow core */
+      --accent:#D6FF2A;     /* neon yellow */
+      --accent2:#9BFF1F;    /* slightly greener neon */
+
+      /* Supporting secondary tones */
+      --music:#8B5CF6;      /* purple */
+      --pickle:#14B8A6;     /* teal */
+
+      --shadow: 0 18px 60px rgba(0,0,0,0.58);
+      --radius: 18px;
+
+      --max: 1120px;
+      --pad: clamp(16px, 2.8vw, 28px);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 700px at 18% 10%, rgba(214,255,42,0.18), transparent 58%),
+        radial-gradient(900px 600px at 85% 18%, rgba(20,184,166,0.16), transparent 60%),
+        radial-gradient(850px 700px at 55% 110%, rgba(139,92,246,0.14), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
+    }
+
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    /* =========================================================
+       DECORATIVE BACKGROUND MOTIFS
+       - Neon dots + subtle "note" pills
+       - Animated drift (very gentle)
+       NOTE: aria-hidden in HTML
+    ========================================================= */
+    .bg-motifs{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:0.6;
+      z-index:0;
+    }
+    .motif{
+      position:absolute;
+      border-radius: 999px;
+      animation: drift 20s linear infinite;
+      filter: drop-shadow(0 10px 30px rgba(0,0,0,0.2));
+    }
+    .motif.dot{
+      width: 10px; height: 10px;
+      background: radial-gradient(circle at 35% 35%, rgba(214,255,42,0.85), rgba(214,255,42,0.12));
+      box-shadow: 0 0 0 1px rgba(238,245,255,0.06);
+      animation-duration: 18s;
+    }
+    .motif.note{
+      width: 22px; height: 10px;
+      background: linear-gradient(135deg, rgba(214,255,42,0.45), rgba(20,184,166,0.10));
+      border: 1px solid rgba(238,245,255,0.10);
+      animation-duration: 24s;
+    }
+    @keyframes drift{
+      0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+      100% { transform: translate3d(120px, -180px, 0) rotate(360deg); }
+    }
+
+    .wrap{position:relative; z-index:1;}
+    .container{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+    }
+
+    /* =========================================================
+       NAV
+       - Sticky, blurred, clean
+       - Hover micro-interactions
+    ========================================================= */
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter: blur(14px);
+      background: rgba(5,7,14,0.58);
+      border-bottom: 1px solid rgba(238,245,255,0.10);
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding: 14px var(--pad);
+      max-width: var(--max);
+      margin:0 auto;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      letter-spacing:0.2px;
+    }
+    .brand-badge{
+      width:36px; height:36px;
+      border-radius: 12px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(214,255,42,0.95), rgba(214,255,42,0.10)),
+        radial-gradient(circle at 70% 70%, rgba(20,184,166,0.55), rgba(139,92,246,0.10));
+      box-shadow: 0 14px 40px rgba(214,255,42,0.10);
+      animation: badgePulse 5s ease-in-out infinite;
+    }
+    @keyframes badgePulse{
+      0%,100% { transform: scale(1); filter: saturate(1); }
+      50%     { transform: scale(1.04); filter: saturate(1.2); }
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .nav a{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      color: rgba(238,245,255,0.78);
+      border: 1px solid transparent;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+      outline:none;
+    }
+    .nav a:hover, .nav a:focus-visible{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(238,245,255,0.14);
+      color: rgba(238,245,255,0.95);
+    }
+
+    /* =========================================================
+       HERO
+       - Card glow wash
+       - Floating chips
+       - CTA buttons
+    ========================================================= */
+    .hero{ padding: clamp(32px, 5vw, 72px) 0 22px; }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: clamp(18px, 3vw, 28px);
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr;}
+    }
+
+    .hero-card{
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
+      border: 1px solid rgba(238,245,255,0.12);
+      box-shadow: var(--shadow);
+      padding: clamp(18px, 2.8vw, 30px);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-card::before{
+      /* Animated glow wash (tasteful) */
+      content:"";
+      position:absolute;
+      inset:-120px;
+      background:
+        radial-gradient(circle at 25% 25%, rgba(214,255,42,0.22), transparent 55%),
+        radial-gradient(circle at 80% 40%, rgba(20,184,166,0.16), transparent 60%),
+        radial-gradient(circle at 60% 90%, rgba(139,92,246,0.12), transparent 55%);
+      animation: glowShift 10s ease-in-out infinite;
+      pointer-events:none;
+    }
+    @keyframes glowShift{
+      0%,100% { transform: rotate(0deg) scale(1); opacity: 0.9; }
+      50%     { transform: rotate(8deg) scale(1.05); opacity: 1; }
+    }
+    .hero-content{ position:relative; z-index:1; }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 8px 12px;
+      border: 1px solid rgba(238,245,255,0.14);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      color: rgba(238,245,255,0.86);
+      font-size: 13px;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), rgba(20,184,166,0.65));
+      box-shadow: 0 0 0 5px rgba(214,255,42,0.10);
+      animation: dotBounce 2.8s ease-in-out infinite;
+    }
+    @keyframes dotBounce{ 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-3px); } }
+
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(30px, 4.2vw, 54px);
+      line-height: 1.02;
+      letter-spacing:-0.6px;
+    }
+    .sub{
+      margin:0;
+      font-size: clamp(15px, 1.45vw, 18px);
+      color: var(--muted);
+      line-height:1.65;
+      max-width: 68ch;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top: 18px;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(238,245,255,0.14);
+      background: rgba(255,255,255,0.06);
+      color: rgba(238,245,255,0.92);
+      font-weight: 720;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
+      cursor:pointer;
+      user-select:none;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.085);
+      border-color: rgba(238,245,255,0.18);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.25);
+    }
+    .btn.primary{
+      border-color: rgba(214,255,42,0.40);
+      background: linear-gradient(135deg, rgba(214,255,42,0.22), rgba(20,184,166,0.14));
+      box-shadow: 0 16px 50px rgba(214,255,42,0.08);
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+    @media (max-width: 560px){ .stats{ grid-template-columns: 1fr; } }
+    .stat{
+      border: 1px solid rgba(238,245,255,0.12);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.05);
+      padding: 12px 12px;
+      transition: transform .18s ease, background .18s ease;
+    }
+    .stat:hover{ transform: translateY(-2px); background: rgba(255,255,255,0.07); }
+    .stat b{ display:block; font-size: 14px; }
+    .stat span{ color: var(--muted2); font-size: 13px; line-height:1.45; }
+
+    .portrait{
+      border-radius: var(--radius);
+      border: 1px solid rgba(238,245,255,0.12);
+      background: rgba(255,255,255,0.05);
+      box-shadow: var(--shadow);
+      padding: clamp(14px, 2vw, 18px);
+      position:relative;
+      overflow:hidden;
+      min-height: 330px;
+    }
+    .portrait .frame{
+      border-radius: 16px;
+      overflow:hidden;
+      border: 1px solid rgba(238,245,255,0.12);
+      background: rgba(255,255,255,0.04);
+      height: 100%;
+      min-height: 290px;
+      position:relative;
+    }
+
+    /* Animation: sheen pass across image area */
+    .portrait .frame::after{
+      content:"";
+      position:absolute;
+      inset:-30%;
+      background: linear-gradient(120deg, transparent 35%, rgba(238,245,255,0.12) 50%, transparent 65%);
+      transform: translateX(-40%) rotate(12deg);
+      animation: sheen 7.5s ease-in-out infinite;
+      pointer-events:none;
+    }
+    @keyframes sheen{
+      0%,55%   { transform: translateX(-60%) rotate(12deg); opacity:0; }
+      70%      { opacity:1; }
+      100%     { transform: translateX(80%) rotate(12deg); opacity:0; }
+    }
+
+    .hero-img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      aspect-ratio: 4 / 5;
+      filter: contrast(1.03) saturate(1.05);
+      transform: scale(1.001);
+    }
+
+    /* Floating chips */
+    .float-chip{
+      position:absolute;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(238,245,255,0.12);
+      background: rgba(5,7,14,0.45);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.45);
+      color: rgba(238,245,255,0.86);
+      font-size: 13px;
+      animation: floaty 4.6s ease-in-out infinite;
+    }
+    .float-chip.one{ top: 16px; left: 16px; animation-delay: 0s; }
+    .float-chip.two{ bottom: 16px; right: 16px; animation-delay: 0.6s; }
+    @keyframes floaty{ 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-6px); } }
+
+    /* =========================================================
+       SECTIONS + REVEAL ANIMATION (JS adds .in)
+    ========================================================= */
+    section{ padding: 28px 0; }
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    h2{
+      margin:0;
+      font-size: clamp(22px, 2.5vw, 30px);
+      letter-spacing:-0.3px;
+    }
+    .lead{
+      margin:0;
+      color: var(--muted);
+      line-height:1.65;
+      max-width: 76ch;
+      font-size: 15px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, minmax(0,1fr));
+      gap: 14px;
+    }
+    .card{
+      grid-column: span 6;
+      border-radius: var(--radius);
+      border: 1px solid rgba(238,245,255,0.12);
+      background: rgba(255,255,255,0.05);
+      padding: 16px;
+      box-shadow: 0 14px 50px rgba(0,0,0,0.25);
+      position:relative;
+      overflow:hidden;
+
+      transform: translateY(10px);
+      opacity: 0;
+      transition: transform .55s ease, opacity .55s ease, background .18s ease;
+    }
+    .card.in{ transform: translateY(0); opacity: 1; }
+    .card:hover{ background: rgba(255,255,255,0.065); }
+
+    .card h3{ margin: 0 0 8px; font-size: 18px; letter-spacing:-0.2px; }
+    .card p{ margin: 0 0 10px; color: var(--muted); line-height:1.68; font-size: 14px; }
+    .card ul{ margin:0; padding-left: 18px; color: rgba(238,245,255,0.80); }
+    .card li{ margin: 6px 0; line-height:1.5; font-size: 14px; }
+
+    .pillrow{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+    .pill{
+      font-size: 12px;
+      color: rgba(238,245,255,0.90);
+      border: 1px solid rgba(238,245,255,0.14);
+      background: rgba(255,255,255,0.05);
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+    .pill.neon{
+      border-color: rgba(214,255,42,0.38);
+      background: rgba(214,255,42,0.10);
+      box-shadow: 0 0 0 1px rgba(214,255,42,0.06) inset;
+    }
+
+    .card.wide{ grid-column: span 12; }
+    .card.third{ grid-column: span 4; }
+    @media (max-width: 900px){
+      .card{ grid-column: span 12; }
+      .card.third{ grid-column: span 12; }
+    }
+
+    /* Gallery */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(12, minmax(0,1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .shot{
+      grid-column: span 6;
+      border-radius: 18px;
+      border: 1px solid rgba(238,245,255,0.12);
+      background: rgba(255,255,255,0.05);
+      overflow:hidden;
+      position:relative;
+
+      transform: translateY(10px);
+      opacity: 0;
+      transition: transform .55s ease, opacity .55s ease, box-shadow .18s ease;
+    }
+    .shot.in{ transform: translateY(0); opacity: 1; }
+    @media (max-width: 560px){ .shot{ grid-column: span 12; } }
+
+    .shot img{ width:100%; height:auto; display:block; object-fit:cover; background: rgba(255,255,255,0.03); }
+    .shot .cap{
+      padding: 12px 12px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid rgba(238,245,255,0.08);
+    }
+    .shot:hover{ transform: translateY(-2px); box-shadow: 0 18px 70px rgba(0,0,0,0.35); }
+
+    /* Contact */
+    .contact-row{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-top: 10px; }
+    .contact-chip{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(238,245,255,0.14);
+      background: rgba(255,255,255,0.05);
+      color: rgba(238,245,255,0.88);
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .contact-chip:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(214,255,42,0.30);
+    }
+
+    footer{
+      padding: 30px 0 60px;
+      border-top: 1px solid rgba(238,245,255,0.10);
+      margin-top: 18px;
+      color: rgba(238,245,255,0.65);
+      font-size: 13px;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+      .card, .shot{ opacity:1 !important; transform:none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-motifs" aria-hidden="true">
+    <div class="motif dot"  style="top:18%;left:12%;"></div>
+    <div class="motif note" style="top:28%;left:78%;"></div>
+    <div class="motif dot"  style="top:62%;left:8%;"></div>
+    <div class="motif note" style="top:70%;left:86%;"></div>
+    <div class="motif dot"  style="top:82%;left:45%;"></div>
+    <div class="motif note" style="top:14%;left:52%;"></div>
+    <div class="motif dot"  style="top:44%;left:32%;"></div>
+    <div class="motif note" style="top:56%;left:62%;"></div>
+  </div>
+
+  <div class="wrap">
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="#top" aria-label="Go to top">
+          <span class="brand-badge" aria-hidden="true"></span>
+          <span>Wakyzaky</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#hobbies">Hobbies</a>
+          <a href="#achievements">Achievements</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top" class="container">
+      <section class="hero" aria-label="Intro">
+        <div class="hero-grid">
+          <div class="hero-card">
+            <div class="hero-content">
+              <div class="kicker">
+                <span class="dot" aria-hidden="true"></span>
+                <span>Prosper, TX • Guitar • Pickleball competitor</span>
+              </div>
+
+              <h1>Wakyzaky — neon energy, clean skills.</h1>
+              <p class="sub">
+                Wakyzaky is a <strong>14-year-old</strong> from <strong>Prosper</strong> who lives for two things:
+                <strong>music</strong> (especially guitar) and <strong>pickleball</strong>.
+                This site is a polished snapshot of his story — built to be easy to scan, fun to explore, and ready to grow.
+              </p>
+
+              <div class="hero-actions">
+                <a class="btn primary" href="#about" aria-label="Learn more about Wakyzaky"><span aria-hidden="true">✦</span><span>Meet Wakyzaky</span></a>
+                <a class="btn" href="#contact" aria-label="Contact Wakyzaky"><span aria-hidden="true">✉</span><span>Contact</span></a>
+              </div>
+
+              <div class="stats" aria-label="Highlights">
+                <div class="stat"><b>Pickleball highlight</b><span><strong>5th place</strong> — PPA Texas Open</span></div>
+                <div class="stat"><b>Music focus</b><span><strong>Guitar</strong> • learning new songs + improving tone</span></div>
+                <div class="stat"><b>Favorite artist</b><span><strong>Chloe Adams</strong> (inspiration for vibe + songwriting)</span></div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="portrait" aria-label="Profile image panel">
+            <div class="float-chip one" aria-hidden="true" title="Music"><span style="color:var(--accent);font-weight:800;">♫</span><span>Guitar mode</span></div>
+            <div class="float-chip two" aria-hidden="true" title="Pickleball"><span style="color:var(--accent);font-weight:800;">●</span><span>Pickleball mode</span></div>
+
+            <div class="frame">
+              <!-- Image placeholder: replace with your actual photo file.
+                   For now we ship a clean placeholder SVG so deployment never breaks. -->
+              <img class="hero-img" src="assets/wakyzaky-hero.svg" alt="Wakyzaky hero image" />
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="about" aria-label="About">
+        <div class="section-head">
+          <div>
+            <h2>About</h2>
+            <p class="lead">A friendly overview of who Wakyzaky is — what he enjoys, how he practices, and what he’s building next.</p>
+          </div>
+        </div>
+
+        <div class="grid">
+          <article class="card reveal">
+            <h3>Background</h3>
+            <p>Wakyzaky is a 14-year-old from Prosper who balances two worlds: the creativity of music and the strategy of pickleball. He’s consistent — a little practice, a little progress, every week.</p>
+            <ul>
+              <li><strong>Home base:</strong> Prosper, TX</li>
+              <li><strong>Main hobbies:</strong> Guitar • Pickleball</li>
+              <li><strong>Signature style:</strong> High-energy, upbeat, confident</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <h3>What he’s like</h3>
+            <p>Friendly, focused, and always improving. Wakyzaky keeps it positive — and still takes his goals seriously.</p>
+            <div class="pillrow" aria-label="Personality highlights">
+              <span class="pill neon">Driven</span>
+              <span class="pill neon">Creative</span>
+              <span class="pill neon">Team-minded</span>
+              <span class="pill neon">Curious</span>
+            </div>
+            <p style="margin-top:10px;"><strong>Current theme:</strong> “Practice that looks small becomes results that look big.”</p>
+          </article>
+
+          <article class="card wide reveal">
+            <h3>Quick highlights</h3>
+            <p>Music builds timing and confidence. Pickleball builds speed and decision-making. Put them together and you get: creativity + focus + competition — all in one.</p>
+            <ul>
+              <li><strong>Music:</strong> Guitar • inspired by Chloe Adams</li>
+              <li><strong>Pickleball:</strong> 5th place at the PPA Texas Open</li>
+              <li><strong>Next goals:</strong> Add next tournament • Add next song/project</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="hobbies" aria-label="Hobbies">
+        <div class="section-head">
+          <div>
+            <h2>Hobbies</h2>
+            <p class="lead">Two lanes, one personality: rhythm and rallies — all with a neon-yellow edge.</p>
+          </div>
+        </div>
+
+        <div class="grid">
+          <article class="card reveal">
+            <h3>Music (Guitar)</h3>
+            <p>Guitar is Wakyzaky’s creative zone — where he can lock in, experiment with sound, and level up song by song.</p>
+            <ul>
+              <li><strong>Instrument:</strong> Guitar</li>
+              <li><strong>Inspired by:</strong> Chloe Adams</li>
+              <li><strong>Working on:</strong> Add song list • Add technique</li>
+              <li><strong>Goal:</strong> Record a cover / write an original / perform live</li>
+            </ul>
+            <div class="pillrow">
+              <span class="pill neon">Timing</span>
+              <span class="pill neon">Tone</span>
+              <span class="pill neon">Confidence</span>
+            </div>
+            <!-- Future upgrade: embed audio clips in /assets and add a player here. -->
+          </article>
+
+          <article class="card reveal">
+            <h3>Pickleball</h3>
+            <p>Pickleball is where Wakyzaky brings the energy — quick reactions, smart shot choices, and staying calm in tight points.</p>
+            <ul>
+              <li><strong>Achievement:</strong> 5th place — PPA Texas Open</li>
+              <li><strong>Strengths:</strong> Add serve/dinks/volleys</li>
+              <li><strong>Focus:</strong> consistency, placement, court awareness</li>
+              <li><strong>Favorite part:</strong> long rallies where strategy matters</li>
+            </ul>
+            <div class="pillrow">
+              <span class="pill neon">Focus</span>
+              <span class="pill neon">Footwork</span>
+              <span class="pill neon">Strategy</span>
+            </div>
+          </article>
+
+          <article class="card wide reveal">
+            <h3>How music helps pickleball (and vice versa)</h3>
+            <p>The same skills keep showing up:</p>
+            <ul>
+              <li><strong>Rhythm → consistency:</strong> steady timing builds repeatable form.</li>
+              <li><strong>Listening → anticipation:</strong> you notice patterns earlier.</li>
+              <li><strong>Practice → confidence:</strong> pressure feels easier when reps are real.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="achievements" aria-label="Achievements">
+        <div class="section-head">
+          <div>
+            <h2>Achievements</h2>
+            <p class="lead">The wins that show Wakyzaky’s progress — competitive results plus skill growth.</p>
+          </div>
+        </div>
+
+        <div class="grid">
+          <article class="card third reveal">
+            <h3>Pickleball</h3>
+            <ul>
+              <li><strong>PPA Texas Open:</strong> 5th place</li>
+              <li><strong>Next target:</strong> Add next event</li>
+              <li><strong>Training focus:</strong> placement + consistency</li>
+            </ul>
+          </article>
+
+          <article class="card third reveal">
+            <h3>Music</h3>
+            <ul>
+              <li><strong>Guitar progress:</strong> Add milestone</li>
+              <li><strong>Song list:</strong> Add songs</li>
+              <li><strong>Next project:</strong> Record/perform</li>
+            </ul>
+          </article>
+
+          <article class="card third reveal">
+            <h3>Personal</h3>
+            <ul>
+              <li><strong>Consistency:</strong> regular practice mindset</li>
+              <li><strong>Confidence:</strong> showing up under pressure</li>
+              <li><strong>Community:</strong> Add club/team</li>
+            </ul>
+          </article>
+
+          <article class="card wide reveal">
+            <h3>Next goals</h3>
+            <ul>
+              <li><strong>Now:</strong> Add short-term goal</li>
+              <li><strong>Next:</strong> Add mid-term goal</li>
+              <li><strong>Later:</strong> Add long-term goal</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="gallery" aria-label="Gallery">
+        <div class="section-head">
+          <div>
+            <h2>Gallery</h2>
+            <p class="lead">Images are wired up as local assets. Replace the placeholder SVGs with your real files when available.</p>
+          </div>
+        </div>
+
+        <div class="gallery">
+          <figure class="shot reveal">
+            <img src="assets/wakyzaky-1.svg" alt="Gallery image 1" />
+            <figcaption class="cap">Press-style shot — neon vibe</figcaption>
+          </figure>
+          <figure class="shot reveal">
+            <img src="assets/wakyzaky-2.svg" alt="Gallery image 2" />
+            <figcaption class="cap">On-the-scene energy — big personality</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="contact" aria-label="Contact">
+        <div class="section-head">
+          <div>
+            <h2>Contact</h2>
+            <p class="lead">Fast and simple. (If you want a real form submit later, we’ll add a Cloudflare Worker endpoint.)</p>
+          </div>
+        </div>
+
+        <div class="grid">
+          <article class="card wide reveal">
+            <h3>Get in touch</h3>
+            <p>For music collaborations, pickleball invites, or general questions:</p>
+            <div class="contact-row">
+              <a class="contact-chip" href="mailto:wakyzaky@wakyzakyzaky.com">
+                <span aria-hidden="true" style="color:var(--accent);font-weight:900;">✉</span>
+                <span>wakyzaky@wakyzakyzaky.com</span>
+              </a>
+            </div>
+            <!-- Privacy note: Wakyzaky is 14. Avoid address/school names on public pages. -->
+          </article>
+        </div>
+      </section>
+
+      <footer>
+        <div class="container" style="padding:0;">
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;">
+            <span>© <span id="year"></span> Wakyzaky • Prosper, TX</span>
+            <span style="color:rgba(238,245,255,0.55);">Neon theme • Smooth reveals • Hover micro-interactions</span>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    /* =========================================================
+       INTERACTIVITY + ANIMATIONS
+       1) Smooth scroll anchors
+       2) Reveal-on-scroll: add .in when elements enter view
+    ========================================================= */
+
+    document.documentElement.style.scrollBehavior = "smooth";
+
+    const revealEls = Array.from(document.querySelectorAll(".reveal"));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting){
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach(el => io.observe(el));
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
